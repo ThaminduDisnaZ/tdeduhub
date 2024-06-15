@@ -1,0 +1,115 @@
+// -----------------------------------------------------------------------------
+// Typography
+// -----------------------------------------------------------------------------
+
+// basic style for copy text
+//
+// example:
+// https://github.com/HugoGiraudel/sass-boilerplate/blob/master/stylesheets/base/_typography.scss
+body {
+  font: normal 100% / 1.4 $text-font-stack;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $text-font-paragraph;
+  font-weight: 700;
+  color: $black;
+}
+p {
+  font-family: $text-font-paragraph;
+  font-weight: 500;
+  margin-bottom: 1.5em;
+  @include mobile {
+    font-size: 14px;
+  }
+}
+
+.wrap__article-detail-content {
+  p {
+    line-height: 28px;
+    color: #333;
+  }
+}
+
+p.has-drop-cap-container {
+  width: 80%;
+  max-width: 50em;
+  margin: 0 auto;
+  line-height: 28px;
+  margin-bottom: 1.5em;
+  &::first-letter {
+    initial-letter: 3;
+    color: #c69c6d;
+    margin: 0 0.2em 0 0;
+    font-size: 5em;
+    float: left;
+    font-weight: 600;
+    line-height: 1;
+
+    // font-size: 400%;
+    // color: #ff0000;
+    // font-weight: bold;
+    // float: left;
+    // initial-letter: 3;
+  }
+}
+
+p.has-drop-cap-fluid {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  color: #333;
+  line-height: 28px;
+  font-weight: 500;
+  margin-bottom: 1.5em;
+  &::first-letter {
+    initial-letter: 3;
+    color: #343a40;
+    margin: 0 0.2em 0 0;
+    font-size: 5em;
+    float: left;
+    font-weight: 600;
+    line-height: 1;
+
+    // font-size: 400%;
+    // color: #ff0000;
+    // font-weight: bold;
+    // float: left;
+    // initial-letter: 3;
+  }
+}
+
+blockquote.alignright {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  font-size: 24px;
+  font-weight: 700;
+  float: right;
+  margin: 0 0 15px 30px;
+  max-width: 50%;
+  border-width: 0 0 0 1px;
+  border-style: solid;
+  border-color: rgba(95, 131, 137, 0.1);
+  line-height: 40px;
+  @include mobile {
+    max-width: 100%;
+  }
+  p {
+    font-family: $text-font-stack;
+    font-weight: 700;
+    margin-bottom: 0;
+    font-size: 24px;
+  }
+}
+
+blockquote {
+  footer {
+    text-align: right;
+    font-weight: 700;
+  }
+}

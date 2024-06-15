@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Retnews &#8211; Best news, blog & magazine template</title>
+	<meta name="description" content="">
+	${require('./partials/head.html')}
+</head>
+
+<body>
+	<!-- loading -->
+	${require('./partials/loading.html')}
+	<!-- end loading -->
+
+	<!-- header -->
+	<header class="bg-light">
+		<!-- navbar -->
+		${require('./partials/navbar-kit.html')}
+		<!-- end navbar -->
+	</header>
+	<!-- end header -->
+
+
+	<section class="pb-80">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- breaddcrumb -->
+					${require('./partials/breadcrumb.html')}
+					<!-- end breadcrumb -->
+				</div>
+				<div class="col-md-8">
+					<!-- content article detail -->
+					${require('./partials/card-article-detail-v1.html')}
+					<!-- end content article detail -->
+
+					<!-- tags -->
+					${require('./partials/tags.html')}
+					<!-- end tags-->
+
+					<!-- authors-->
+					${require('./partials/profile-author.html')}
+					<!-- end author-->
+
+					<!-- comment -->
+					${require('./partials/comment.html')}
+					<!-- end comment -->
+					<div class="row">
+						<div class="col-md-6">
+							<div class="single_navigation-prev">
+								<a href="#">
+									<span>previous post</span>
+									Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, similique.
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="single_navigation-next text-left text-md-right">
+								<a href="#">
+									<span>next post</span>
+									Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, nesciunt.
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+
+					<div class="related-article">
+						<h4>
+							you may also like
+						</h4>
+
+						<div class="article__entry-carousel-three">
+							<div class="item">
+								${require('./partials/card-article-v11.html')}
+							</div>
+							<div class="item">
+								${require('./partials/card-article-v11.html')}
+							</div>
+							<div class="item">
+								${require('./partials/card-article-v11.html')}
+							</div>
+							<div class="item">
+								${require('./partials/card-article-v11.html')}
+							</div>
+							<div class="item">
+								${require('./partials/card-article-v11.html')}
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-4">
+					<div class="sticky-top">
+						<aside class="wrapper__list__article ">
+							<!-- <h4 class="border_section">Sidebar</h4> -->
+							<div class="mb-4">
+								${require('./partials/form-searchbar.html')}
+							</div>
+							<div class="wrapper__list__article-small">
+								<div class="mb-3">
+									${require('./partials/card-article-v5.1.html')}
+								</div>
+								<div class="mb-3">
+									${require('./partials/card-article-v5.1.html')}
+								</div>
+								<div class="mb-3">
+									${require('./partials/card-article-v5.1.html')}
+								</div>
+
+								${require('./partials/card-article-v11.1.html')}
+							</div>
+						</aside>
+
+						<!-- social media -->
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">stay conected</h4>
+							${require('./partials/social-media-v1.html')}
+						</aside>
+						<!-- End social media -->
+
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">tags</h4>
+							${require('./partials/tags-1.html')}
+						</aside>
+
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">newsletter</h4>
+							${require('./partials/form.html')}
+						</aside>
+
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">Advertise</h4>
+							<a href="#">
+								<figure>
+									<img src="../../assets/images/placeholder/500x400.jpg" alt="" class="img-fluid">
+								</figure>
+							</a>
+						</aside>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+	<section class="wrapper__section p-0">
+		<div class="wrapper__section__components">
+			${require('./partials/footer-2.html')}
+		</div>
+	</section>
+
+
+	<a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
+
+</body>
+
+</html>

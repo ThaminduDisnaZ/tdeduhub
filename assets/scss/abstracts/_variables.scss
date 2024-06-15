@@ -1,0 +1,81 @@
+// -----------------------------------------------------------------------------
+// Variables
+// -----------------------------------------------------------------------------
+
+// Colors
+//
+
+$white: #fff;
+$gray: #ececec;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+$blue: #11cdef;
+$red: #f5365c;
+$orange: #cc0000;
+$green: #2dce89;
+
+$primary: $orange;
+$success: $green;
+$info: $blue;
+$danger: $red;
+
+$title-color: #434343;
+$navy: #34495e;
+$dark-green-color: #21b68e;
+$text-color: #5d5d5d;
+$second-color: #f9f9f9;
+
+// Body
+//
+
+$body-bg: $white;
+$body-color: $gray-900;
+
+// Typography
+
+$text-font-stack: "Poppins", sans-serif;
+
+$text-font-paragraph: "Montserrat", sans-serif;
+
+$font-family-sans-serif: Montserrat, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-base: $font-family-sans-serif;
+
+$font-size-base: 1rem; // Assumes the browser default, typically `16px`
+$font-size-lg: $font-size-base * 1.25;
+$font-size-sm: $font-size-base * 0.875;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 500;
+$font-weight-bolder: 900;
+
+$h1-font-size: $font-size-base * 2.75;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+
+$headings-font-weight: $font-weight-bolder;
+
+// Header
+//
+
+$header-bg: $body-bg;
+
+// Buttons + Forms
+//
+
+$input-btn-padding-y: 0.75rem !default;
+$input-btn-padding-x: 2rem !default;
+
+$slick-font-family: FontAwesome;
+$slick-prev-character: "\f053";
+$slick-next-character: "\f054";

@@ -1,0 +1,36 @@
+// -----------------------------------------------------------------------------
+// Home page
+// -----------------------------------------------------------------------------
+.wrapper__section {
+  padding: 10px 0;
+}
+
+.section__content {
+  padding: 100px 0;
+  @include mobile {
+    padding: 40px 0;
+  }
+}
+.wrapper__section__components {
+  // border:1px solid gray;
+  a {
+    color: #6f6f6f;
+    &:hover {
+      text-decoration: none;
+      color: $primary;
+    }
+    .box {
+      margin: 0px -1px -1px;
+      border-radius: 0;
+    }
+  }
+}
+
+.wrapper-topic {
+  h2 {
+    // text-align: center;
+    text-transform: uppercase;
+    color: $white;
+    margin-bottom: 40px;
+  }
+}

@@ -1,0 +1,24 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the breadcrumb component.
+// -----------------------------------------------------------------------------
+
+/*-------------------------------------------------------*/
+/* Error page
+/*-------------------------------------------------------*/
+.error-content {
+  display: block;
+  h1 {
+    font-size: 150px;
+    font-weight: 900;
+
+    background: url("../../images/placeholder/1920x960.jpg") no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    background-clip: text;
+    background-size: cover;
+    background-position: center;
+  }
+  h2 {
+  }
+}

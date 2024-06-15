@@ -1,0 +1,181 @@
+// -----------------------------------------------------------------------------
+// LIST ARTICLE WITH NUMBER
+// -----------------------------------------------------------------------------
+
+.card__post__list {
+  margin-bottom: 20px;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+  .list-number {
+    font-size: 20px;
+    font-weight: 700;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    float: left;
+    margin-right: 8px;
+    background-color: #eee;
+    border-radius: 50%;
+    font-family: $text-font-paragraph;
+    font-style: italic;
+  }
+  .list-inline {
+    position: relative;
+    display: table;
+    margin-bottom: 10px;
+  }
+
+  .category {
+    clear: both;
+    color: $white;
+    display: inline-block;
+    font-size: 10px;
+    margin-bottom: 5px;
+    padding: 5px 8px;
+    background: -moz-linear-gradient(285deg, #f92a28 27%, #da1752 100%, #ffffff 100%); /* FF3.6+ */
+    background: -webkit-gradient(
+      linear,
+      285deg,
+      color-stop(27%, F92A28),
+      color-stop(100%, DA1752),
+      color-stop(100%, FFFFFF)
+    ); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(285deg, #f92a28 27%, #da1752 100%, #ffffff 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(285deg, #f92a28 27%, #da1752 100%, #ffffff 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(285deg, #f92a28 27%, #da1752 100%, #ffffff 100%); /* IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1301FE', endColorstr='#F4F60C', GradientType='1'); /* for IE */
+    background: linear-gradient(285deg, #f92a28 27%, #da1752 100%, #ffffff 100%); /* W3C */
+
+    line-height: 15px;
+    text-transform: uppercase;
+    font-family: $text-font-paragraph;
+    font-weight: 600;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .list-inline-item {
+    .author-info,
+    span {
+      font-size: 12px;
+      color: $dark;
+      text-transform: capitalize;
+      font-family: $text-font-paragraph;
+      &:hover {
+        text-decoration: none;
+        // background-color: $primary !important;
+      }
+    }
+    h5 {
+      margin: 5px 0 0;
+      font-size: $font-size-base;
+      text-transform: capitalize;
+      @include mobile {
+        font-size: 15px;
+      }
+      @include tablet {
+        font-size: 14px;
+      }
+      a {
+        color: $black;
+        &:hover {
+          color: $primary;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// LIST ARTICLE WITH colomn
+// -----------------------------------------------------------------------------
+
+.wrapper__list__article {
+  // margin: 20px 0 0;
+  margin-bottom: 30px;
+  h4 {
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    font-size: 20px;
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+  .border_section {
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 5px;
+      background: $primary;
+      z-index: 1;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: #eee;
+    }
+  }
+
+  .card__post__content {
+    display: inline-block;
+
+    .card__post__title {
+      h5 {
+        a {
+          color: $gray-800;
+          &:hover {
+            text-decoration: none;
+            color: $primary;
+          }
+        }
+      }
+      .btn-primary {
+        text-transform: capitalize;
+        font-family: $text-font-paragraph;
+      }
+    }
+  }
+
+  .article__entry {
+    .article__content {
+      @include mobile {
+        margin-top: -20px;
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// CARD ARTICLE SMALL
+// -----------------------------------------------------------------------------
+.wrapper__list__article {
+  .wrapp__list__article-responsive {
+    .card__post__body {
+      margin-top: 10px;
+      .card__post__content {
+        .card__post__category {
+          @include mobile {
+            position: absolute;
+            top: -45px !important;
+            left: 30px !important;
+          }
+        }
+      }
+    }
+  }
+}

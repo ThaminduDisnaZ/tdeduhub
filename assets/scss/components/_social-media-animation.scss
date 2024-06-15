@@ -1,0 +1,208 @@
+/*-------------------------------------------------------*/
+/* Social media
+/*-------------------------------------------------------*/
+.social__media__animation {
+	.menu {
+		z-index: 999;
+		position: absolute;
+		padding: 0;
+		margin: 0;
+		list-style-type: none;
+		cursor: pointer;
+		.share {
+			i.fa {
+				height: 50px;
+				width: 50px;
+				text-align: center;
+				line-height: 50px;
+				background-color: #fff;
+				border-radius: 2px;
+				@include mobile {
+					height: 40px;
+					width: 40px;
+					line-height: 40px;
+				}
+			}
+			&:hover {
+				&.bottom {
+					.list__submenu {
+						@for $i from 1 through 5 {
+							li:nth-child(#{$i}) {
+								opacity: 1;
+								top: #{$i * 50}px;
+								transform: rotate(0deg);
+								border-top: 1px dashed darken($white, 20%);
+								transition-delay: #{$i * 0.08}s;
+								@include mobile {
+									top: #{$i * 40}px;
+								}
+							}
+						}
+					}
+				}
+				&.left {
+					.list__submenu {
+						@for $i from 1 through 5 {
+							li:nth-child(#{$i}) {
+								opacity: 1;
+								left: #{-$i * 51}px;
+								transform: rotate(0deg);
+								transition-delay: #{$i * 0.5}s;
+								border-right: 1px dashed darken($white, 20%);
+							}
+						}
+					}
+				}
+				&.right {
+					.list__submenu {
+						@for $i from 1 through 5 {
+							li:nth-child(#{$i}) {
+								opacity: 1;
+								left: #{$i * 50}px;
+								transform: rotate(0deg);
+								transition-delay: #{$i * 0.08}s;
+								border-left: 1px dashed darken($white, 20%);
+							}
+						}
+					}
+				}
+				&.top {
+					.list__submenu {
+						@for $i from 1 through 5 {
+							li:nth-child(#{$i}) {
+								opacity: 1;
+								top: #{-$i * 51}px;
+								transition-delay: #{$i * 0.08}s;
+								transform: rotateY(0deg);
+								border-bottom: 1px dashed darken($white, 15%);
+							}
+						}
+					}
+				}
+			}
+		}
+		.list__submenu {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+			li {
+				transition: all ease-in-out 0.5s;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -1;
+				opacity: 0;
+				a {
+					color: #212121;
+					&:hover {
+						i.fa {
+							color: #fff;
+						}
+						&.facebook {
+							i.fa {
+								background-color: #3b5999;
+							}
+						}
+						&.twitter {
+							i.fa {
+								background-color: #55acee;
+							}
+						}
+						&.googlePlus {
+							i.fa {
+								background-color: #dd4b39;
+							}
+						}
+						&.instagram {
+							i.fa {
+								background-color: #e4405f;
+							}
+						}
+					}
+				}
+			}
+			@for $i from 1 through 4 {
+				li:nth-child(#{$i}) {
+					transform: rotateX(#{$i * 45}deg);
+				}
+			}
+		}
+		&.topLeft {
+			top: 10px;
+			left: 25px;
+			// left: 10px;
+		}
+		&.topRight {
+			top: 10px;
+			right: 10px;
+		}
+		&.bottomLeft {
+			bottom: 10px;
+			left: 10px;
+		}
+		&.bottomRight {
+			bottom: 10px;
+			right: 10px;
+		}
+	}
+}
+
+/*-------------------------------------------------------*/
+/* Widget  Social media
+/*-------------------------------------------------------*/
+.wrap__social__media {
+	display: block;
+	position: relative;
+	a {
+		.social__media__widget {
+			padding: 6px;
+			color: $white;
+			&-icon {
+				border-right: 1px solid rgba(255, 255, 255, 0.1);
+				font-weight: 700;
+				text-transform: capitalize;
+				width: 32px;
+				height: 32px;
+				display: inline-block;
+				.fa {
+					font-size: 20px;
+					text-align: center;
+					display: block;
+					line-height: 30px;
+				}
+			}
+			&-counter {
+				font-weight: 600;
+				font-size: 14px;
+				text-transform: capitalize;
+				margin-left: 5px;
+			}
+			&-name {
+				font-size: 14px;
+				font-weight: 600;
+				float: right;
+				border-left: 1px solid rgba(255, 255, 255, 0.1);
+				text-transform: capitalize;
+				padding: 4px 8px;
+				line-height: 24px;
+			}
+		}
+
+		.facebook {
+			background-color: #3b5999;
+			margin-bottom: 10px;
+		}
+		.twitter {
+			background-color: #55acee;
+			margin-bottom: 10px;
+		}
+		.youtube {
+			background-color: #cc181e;
+			margin-bottom: 10px;
+		}
+		&:hover {
+			text-decoration: none;
+			opacity: 0.84;
+		}
+	}
+}

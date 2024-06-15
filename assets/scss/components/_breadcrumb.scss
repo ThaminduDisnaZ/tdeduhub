@@ -1,0 +1,41 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the breadcrumb component.
+// -----------------------------------------------------------------------------
+
+/*-------------------------------------------------------*/
+/* Breadcrumbs
+/*-------------------------------------------------------*/
+.breadcrumbs {
+  padding: 15px;
+}
+.breadcrumbs__item {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: $text-font-paragraph;
+}
+.breadcrumbs__item:last-child:after {
+  display: none;
+}
+.breadcrumbs__item i {
+  font-size: 14px;
+}
+.breadcrumbs__item:after {
+  content: "\f105";
+  font-family: FontAwesome;
+  display: inline-block;
+  position: relative;
+  font-size: 14px;
+  margin: 0 6px;
+}
+.breadcrumbs__url {
+  color: $black;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.breadcrumbs__item--current {
+  color: $primary;
+}

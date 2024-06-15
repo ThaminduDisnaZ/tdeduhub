@@ -1,0 +1,38 @@
+// -----------------------------------------------------------------------------
+// Tags component
+// -----------------------------------------------------------------------------
+
+.blog-tags {
+  padding: 15px 0;
+  display: inline-block;
+  .list-inline {
+    margin-bottom: 0;
+    .list-inline-item {
+      margin-right: 0;
+      .fa-tags {
+        margin-right: 10px;
+        text-align: center;
+        position: relative;
+        color: $primary;
+      }
+      a {
+        display: block;
+        margin-bottom: 5px;
+        padding: 7px 10px;
+        border: 1px solid #ddd;
+        margin-right: 2px;
+        color: #000;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 1px;
+        font-family: $text-font-paragraph;
+        &:hover {
+          background-color: $primary;
+          color: $white;
+          border: 1px solid $primary;
+        }
+      }
+    }
+  }
+}

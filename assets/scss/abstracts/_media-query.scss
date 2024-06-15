@@ -1,0 +1,27 @@
+// -----------------------------------------------------------------------------
+// Variables
+// -----------------------------------------------------------------------------
+
+@mixin mobile {
+  @media screen and (min-width: 320px) and (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin desktop-lg {
+  @media screen and (min-width: 992px) {
+    @content;
+  }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<title>Retnews &#8211; Best news, blog & magazine template</title>
+	<meta name="description" content="">
+	${require('./partials/head.html')}
+</head>
+
+<body>
+	${require('./partials/loading.html')}
+
+	<header class="bg-light">
+		${require('./partials/navbar-kit.html')}
+
+	</header>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					${require('./partials/breadcrumb.html')}
+				</div>
+
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<aside class="wrapper__list__article ">
+						<h4 class="border_section">Category title</h4>
+
+						<div class="row">
+							<div class="col-md-6">
+								${require('./partials/card-article-v11.1.html')}
+								${require('./partials/card-article-v11.1.html')}
+								${require('./partials/card-article-v11.1.html')}
+								${require('./partials/card-article-v11.1.html')}
+
+
+							</div>
+							<div class="col-md-6">
+								${require('./partials/card-article-v11.1.html')}
+								${require('./partials/card-article-v11.1.html')}
+								${require('./partials/card-article-v11.1.html')}
+								${require('./partials/card-article-v11.1.html')}
+
+							</div>
+						</div>
+
+					</aside>
+
+				</div>
+				<div class="col-md-4">
+					<div class="sidebar-sticky">
+						<aside class="wrapper__list__article ">
+							<h4 class="border_section">Sidebar</h4>
+							<div class="wrapper__list__article-small">
+								<div class="mb-3">
+									${require('./partials/card-article-v5.1.html')}
+								</div>
+								<div class="mb-3">
+									${require('./partials/card-article-v5.1.html')}
+								</div>
+								<div class="mb-3">
+									${require('./partials/card-article-v5.1.html')}
+								</div>
+
+								${require('./partials/card-article-v11.1.html')}
+							</div>
+						</aside>
+
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">tags</h4>
+							${require('./partials/tags-1.html')}
+						</aside>
+
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">newsletter</h4>
+							${require('./partials/form.html')}
+						</aside>
+
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">Advertise</h4>
+							<a href="#">
+								<figure>
+									<img src="../../assets/images/placeholder/500x400.jpg" alt="" class="img-fluid">
+								</figure>
+							</a>
+						</aside>
+					</div>
+				</div>
+
+				<div class="clearfix"></div>
+			</div>
+			${require('./partials/pagination.html')}
+		</div>
+	</section>
+
+
+
+
+
+	<section class="wrapper__section p-0">
+		<div class="wrapper__section__components">
+			${require('./partials/footer-2.html')}
+		</div>
+	</section>
+
+
+	<a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+// -----------------------------------------------------------------------------
+// Header of the site/application
+// -----------------------------------------------------------------------------
+
+.header {
+  background-color: $header-bg;
+}
+
+.header-two {
+  background-color: $white;
+}
+
+.header-three {
+  background-color: #1b1c26;
+}
+
+.bg-theme-three {
+  background-image: url("../../images/placeholder/1920x960.jpg");
+  width: 100%;
+  background-attachment: fixed !important;
+  background-position: center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+}
+
+.navbar {
+  a {
+    color: $gray-900;
+    &:hover {
+      color: $primary;
+    }
+  }
+}

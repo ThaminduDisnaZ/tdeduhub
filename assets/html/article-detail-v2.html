@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<title>Retnews &#8211; Best news, blog & magazine template</title>
+	<meta name="description" content="">
+	${require('./partials/head.html')}
+</head>
+
+<body class="body-box bg-news-image">
+	${require('./partials/loading.html')}
+
+	<header>
+		${require('./partials/navbar-kit-v1.html')}
+
+	</header>
+
+	<section class="bg-white pb-60">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					${require('./partials/breadcrumb.html')}
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-8">
+					${require('./partials/social-media.html')}
+					${require('./partials/card-article-detail-v2.html')}
+
+					${require('./partials/tags.html')}
+
+
+					${require('./partials/profile-author.html')}
+
+
+					${require('./partials/comment.html')}
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="single_navigation-prev">
+								<a href="#">
+									<span>previous post</span>
+									Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, similique.
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="single_navigation-next text-left text-md-right">
+								<a href="#">
+									<span>next post</span>
+									Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis, nesciunt.
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+
+					<div class="related-article">
+						<h4>
+							you may also like
+						</h4>
+
+						<div class="article__entry-carousel-three">
+							<div class="item">
+								${require('./partials/card-article-v11.html')}
+							</div>
+							<div class="item">
+								${require('./partials/card-article-v11.html')}
+							</div>
+							<div class="item">
+								${require('./partials/card-article-v11.html')}
+							</div>
+							<div class="item">
+								${require('./partials/card-article-v11.html')}
+							</div>
+							<div class="item">
+								${require('./partials/card-article-v11.html')}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<aside class="wrapper__list__article">
+						<div class="wrapper__list__article-small">
+							${require('./partials/card-article-v11.1.html')}
+							<div class="mb-3">
+								${require('./partials/card-article-v5.1.html')}
+							</div>
+							<div class="mb-3">
+								${require('./partials/card-article-v5.1.html')}
+							</div>
+							<div class="mb-3">
+								${require('./partials/card-article-v5.1.html')}
+							</div>
+							<div class="mb-3">
+								${require('./partials/card-article-v5.1.html')}
+							</div>
+						</div>
+					</aside>
+
+					<!-- social media -->
+					<aside class="wrapper__list__article">
+						<h4 class="border_section">stay conected</h4>
+						${require('./partials/social-media-v1.html')}
+					</aside>
+					<!-- End social media -->
+
+					<!-- Newsletter news -->
+					<aside class="wrapper__list__article">
+						<h4 class="border_section">newsletter</h4>
+						${require('./partials/form.html')}
+					</aside>
+					<!-- End Newsletter news -->
+
+					<div class="sidebar-section">
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">trending sports</h4>
+							${require('./partials/list-article-v2.html')}
+							${require('./partials/list-article-v2.html')}
+							${require('./partials/list-article-v2.html')}
+							${require('./partials/list-article-v2.html')}
+						</aside>
+
+						<!-- Tags news -->
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">tags</h4>
+							${require('./partials/tags-1.html')}
+						</aside>
+						<!-- End Tags news -->
+
+						<!-- Category news -->
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">category</h4>
+							${require('./partials/archive-article-v1.html')}
+						</aside>
+						<!-- End Category news -->
+
+						<!-- Banner news -->
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">Advertise</h4>
+							<a href="#">
+								<figure>
+									<img src="../../assets/images/placeholder/600x600.jpg" alt="" class="img-fluid">
+								</figure>
+							</a>
+
+						</aside>
+						<!-- End Banner news -->
+
+
+					</div>
+				</div>
+				<div class="clearfix"></div>
+
+			</div>
+
+		</div>
+	</section>
+
+
+	<section class="wrapper__section p-0">
+		<div class="wrapper__section__components">
+			${require('./partials/footer-1.html')}
+		</div>
+	</section>
+
+
+	<a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
+
+</body>
+
+</html>

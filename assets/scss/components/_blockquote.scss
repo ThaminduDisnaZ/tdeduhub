@@ -1,0 +1,43 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the Blockquote component.
+// -----------------------------------------------------------------------------
+
+/*-------------------------------------------------------*/
+/* Blockquote
+/*-------------------------------------------------------*/
+
+.block-quote {
+  background-color: #fafafa;
+  padding: 30px 30px 30px 70px !important;
+  line-height: 25px;
+  font-weight: 500;
+  position: relative;
+  margin: 20px 0;
+  &::before {
+    font-family: FontAwesome;
+    content: "\f10d";
+    position: absolute;
+    left: 30px;
+    top: 35px;
+    color: #d72924;
+    font-size: 25px;
+    font-style: normal;
+  }
+  p {
+  }
+  cite {
+    position: relative;
+    padding-left: 17px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      background: #d72924;
+      left: 0;
+      width: 10px;
+      height: 2px;
+    }
+  }
+}

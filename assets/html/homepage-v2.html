@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<title>Retnews &#8211; Best news, blog & magazine template</title>
+	<meta name="description" content="">
+	${require('./partials/head.html')}
+</head>
+
+<body class="body-box bg-news-image">
+	${require('./partials/loading.html')}
+
+	<!-- Header news -->
+	<header>
+		<!-- Navbar  -->
+		${require('./partials/navbar-kit-v1.html')}
+		<!-- End Navbar  -->
+		<!-- Tranding News -->
+		<div class="bg-white">
+			${require('./partials/trendingnews-v1.html')}
+		</div>
+		<!-- End Tranding News -->
+	</header>
+	<!-- End Header news -->
+
+	<!-- Popular Content news -->
+	<section class="bg-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<!-- Popular news carousel -->
+					<div class="card__post-carousel">
+						<div class="item">
+							${require('./partials/card-article-v2.html')}
+						</div>
+						<div class="item">
+							${require('./partials/card-article-v2.html')}
+						</div>
+					</div>
+					<!-- End Popular news carousel -->
+					<!-- Banner ads -->
+					<figure class="mt-4 mb-4">
+						<a href="#">
+							<img src="../../assets/images/placeholder/950x150.jpg" alt="" class="img-fluid">
+						</a>
+					</figure>
+					<!-- End Banner ads -->
+
+					<!-- Popular news Category -->
+					<div class="wrapper__list__article">
+						<h4 class="border_section">technology</h4>
+						<div class="row ">
+							<div class="col-lg-6 pd-0">
+								${require('./partials/card-article-v11.1.html')}
+								<div class="mb-3">
+									${require('./partials/card-article-v5.1.html')}
+								</div>
+								<div class="mb-3">
+									${require('./partials/card-article-v5.1.html')}
+								</div>
+
+							</div>
+							<div class="col-lg-6 pd-0">
+								${require('./partials/card-article-v11.1.html')}
+								<div class="mb-3">
+									${require('./partials/card-article-v5.1.html')}
+								</div>
+								<div class="mb-3">
+									${require('./partials/card-article-v5.1.html')}
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Popular news Category -->
+
+					<!-- Popular 3 news carousel -->
+					<div class="wrapper__list__article">
+						<h4 class="border_section">technology</h4>
+						<div class="row ">
+							<div class="col-lg-12 pd-0">
+								<div class="article__entry-carousel-three">
+									<div class="item">
+										${require('./partials/card-article-v11.html')}
+									</div>
+									<div class="item">
+										${require('./partials/card-article-v11.html')}
+									</div>
+									<div class="item">
+										${require('./partials/card-article-v11.html')}
+									</div>
+									<div class="item">
+										${require('./partials/card-article-v11.html')}
+									</div>
+									<div class="item">
+										${require('./partials/card-article-v11.html')}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- End Popular 3 news carousel -->
+
+					<!-- Category news -->
+					<div class="wrapper__list__article">
+						<h4 class="border_section">technology</h4>
+						<div class="wrapp__list__article-responsive">
+							${require('./partials/card-article-v4.2.html')}
+							${require('./partials/card-article-v4.2.html')}
+							${require('./partials/card-article-v4.2.html')}
+							${require('./partials/card-article-v4.2.html')}
+							${require('./partials/card-article-v4.2.html')}
+
+						</div>
+					</div>
+				</div>
+				<!-- End Category news -->
+
+				<div class="col-md-4">
+					<aside class="wrapper__list__article">
+						<div class="wrapper__list__article-small">
+							${require('./partials/card-article-v11.1.html')}
+							<div class="mb-3">
+								${require('./partials/card-article-v5.1.html')}
+							</div>
+							<div class="mb-3">
+								${require('./partials/card-article-v5.1.html')}
+							</div>
+							<div class="mb-3">
+								${require('./partials/card-article-v5.1.html')}
+							</div>
+
+						</div>
+					</aside>
+
+					<!-- social media -->
+					<aside class="wrapper__list__article">
+						<h4 class="border_section">stay conected</h4>
+						${require('./partials/social-media-v1.html')}
+					</aside>
+					<!-- End social media -->
+
+					<!-- Newsletter news -->
+					<aside class="wrapper__list__article">
+						<h4 class="border_section">newsletter</h4>
+						${require('./partials/form.html')}
+					</aside>
+					<!-- End Newsletter news -->
+
+					<div class="sidebar-section">
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">trending sports</h4>
+							${require('./partials/list-article-v2.html')}
+							${require('./partials/list-article-v2.html')}
+							${require('./partials/list-article-v2.html')}
+							${require('./partials/list-article-v2.html')}
+						</aside>
+
+						<!-- Tags news -->
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">tags</h4>
+							${require('./partials/tags-1.html')}
+						</aside>
+						<!-- End Tags news -->
+
+						<!-- Category news -->
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">category</h4>
+							${require('./partials/archive-article-v1.html')}
+						</aside>
+						<!-- End Category news -->
+
+						<!-- Banner news -->
+						<aside class="wrapper__list__article">
+							<h4 class="border_section">Advertise</h4>
+							<a href="#">
+								<figure>
+									<img src="../../assets/images/placeholder/600x600.jpg" alt="" class="img-fluid">
+								</figure>
+							</a>
+						</aside>
+						<!-- End Banner news -->
+					</div>
+				</div>
+				<div class="mx-auto">
+					${require('./partials/pagination.html')}
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</section>
+	<!-- End Popular Content news -->
+
+	<section class="wrapper__section p-0">
+		<div class="wrapper__section__components">
+			<!-- Footer  -->
+			${require('./partials/footer-1.html')}
+			<!-- End Footer  -->
+		</div>
+	</section>
+
+
+	<a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
+
+
+
+</body>
+
+</html>

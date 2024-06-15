@@ -1,0 +1,251 @@
+// -----------------------------------------------------------------------------
+// Button
+// -----------------------------------------------------------------------------
+.btn {
+  font-size: 13px;
+  // padding: 10px 14px;
+  font-family: $text-font-paragraph;
+  font-weight: 600;
+  &::before {
+    position: absolute;
+    -webkit-transition: all 0.3s cubic-bezier(0, 0, 0.1, 1);
+    -moz-transition: all 0.3s cubic-bezier(0, 0, 0.1, 1);
+    -ms-transition: all 0.3s cubic-bezier(0, 0, 0.1, 1);
+    -o-transition: all 0.3s cubic-bezier(0, 0, 0.1, 1);
+    transition: all 0.3s cubic-bezier(0, 0, 0.1, 1);
+    content: "";
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    z-index: -1;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn.focus:active,
+.btn:active:focus,
+.btn:focus {
+  outline: 0 !important;
+  outline-offset: 0 !important;
+  background-image: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.btn-outline-secondary {
+  color: #ced4da;
+  border-color: #ced4da;
+}
+.border-secondary {
+  border-color: #ced4da !important;
+}
+/*================================================
+--> Social Buttons
+==================================================*/
+.btn-facebook {
+  background-color: #3b5999;
+}
+.btn-twitter {
+  background-color: #55acee;
+}
+
+.btn-social.whatsapp {
+  background-color: #25d366;
+}
+.btn-social.telegram {
+  background-color: #179cde;
+}
+
+.btn-whatsapp {
+  background-color: #25d366;
+}
+.btn-telegram {
+  background-color: #179cde;
+}
+.btn-social {
+  font-size: 16px;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  padding: 0 !important;
+  border-radius: 0;
+  margin: 0 auto;
+  line-height: 32px;
+  display: inline-block;
+  i {
+    margin-right: 0px;
+  }
+  &.btn-cicle {
+    border-radius: 50%;
+  }
+  &.rounded {
+    border-radius: 4px;
+  }
+  &.titled {
+    text-transform: capitalize;
+    width: auto;
+    height: 35px;
+    border-radius: 0px;
+    padding: 0 20px !important;
+    line-height: 35px;
+    i {
+      margin-right: 5px;
+    }
+  }
+  &.facebook {
+    background-color: #3b5999;
+  }
+  &.twitter {
+    background-color: #55acee;
+  }
+  &.pinterest {
+    background-color: #bd081c;
+  }
+  &.skype {
+    background-color: #00aff0;
+  }
+  &.linkedin {
+    background-color: #0077b5;
+  }
+  &.instagram {
+    background-color: #d91cac;
+  }
+  &.google-plus {
+    background-color: #dd4b39;
+  }
+  &.youtube {
+    background-color: #cc181e;
+  }
+  &.btn-social-o {
+    color: $white;
+    &:hover {
+      background-color: transparent;
+      box-shadow: none;
+      &.facebook {
+        color: #3b5999;
+      }
+      &.twitter {
+        color: #55acee;
+      }
+      &.pinterest {
+        color: #bd081c;
+      }
+      &.skype {
+        color: #00aff0;
+      }
+      &.linkedin {
+        color: #0077b5;
+      }
+      &.instagram {
+        color: #d91cac;
+      }
+      &.google-plus {
+        color: #dd4b39;
+      }
+      &.youtube {
+        color: #cc181e;
+      }
+    }
+  }
+  &.outlined {
+    background-color: $white;
+    &.facebook {
+      color: #3b5999;
+      border: 1px solid;
+      border-color: #3b5999;
+      &:hover {
+        background-color: #3b5999;
+        color: $white;
+      }
+    }
+    &.twitter {
+      color: #55acee;
+      border: 1px solid;
+      border-color: #55acee;
+      &:hover {
+        background-color: #55acee;
+        color: $white;
+      }
+    }
+    &.pinterest {
+      color: #bd081c;
+      border: 1px solid;
+      border-color: #bd081c;
+      &:hover {
+        background-color: #bd081c;
+        color: $white;
+      }
+    }
+    &.skype {
+      color: #00aff0;
+      border: 1px solid;
+      border-color: #00aff0;
+      &:hover {
+        background-color: #00aff0;
+        color: $white;
+      }
+    }
+    &.linkedin {
+      color: #0077b5;
+      border: 1px solid;
+      border-color: #0077b5;
+      &:hover {
+        background-color: #0077b5;
+        color: $white;
+      }
+    }
+    &.instagram {
+      color: #d91cac;
+      border: 1px solid;
+      border-color: #d91cac;
+      &:hover {
+        background-color: #d91cac;
+        color: $white;
+      }
+    }
+    &.google-plus {
+      color: #dd4b39;
+      border: 1px solid;
+      border-color: #dd4b39;
+      &:hover {
+        background-color: #dd4b39;
+        color: $white;
+      }
+    }
+    &.youtube {
+      color: #cc181e;
+      border: 1px solid;
+      border-color: #cc181e;
+      &:hover {
+        background-color: #cc181e;
+        color: $white;
+      }
+    }
+  }
+}
+
+.socialLink {
+  a {
+    height: 45px;
+    width: 45px;
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    background: transparent;
+
+    line-height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(132, 132, 132, 0.5);
+  }
+}
+
+.btn-cart {
+  padding: 0.75rem 1rem;
+  @include mobile {
+    padding: 12px 20px;
+  }
+}

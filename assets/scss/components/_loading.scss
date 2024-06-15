@@ -1,0 +1,169 @@
+/* ==========================================================================
+   Loading
+   ========================================================================== */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: 999999;
+    background-color: #fff;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.loading-container ul li img {
+    width: 60px;
+    margin: 0 auto;
+    display: block;
+}
+@media screen and (max-width: 320px) {
+    .loading-container ul li img {
+        width: 45px;
+    }
+}
+
+.loading-container ul li p {
+    color: $primary;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: 1.4px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.spinner {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 10px;
+}
+
+.spinner > div {
+    background-color: #333;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect1 {
+    background: $primary;
+    animation-delay: -1.1s;
+}
+
+.spinner .rect2 {
+    background: $primary;
+    animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+    background: $primary;
+    animation-delay: -1s;
+}
+
+.spinner .rect4 {
+    background: $primary;
+    animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+    animation-delay: -0.8s;
+    background: $primary;
+}
+
+@keyframes sk-stretchdelay {
+    0%,
+    40%,
+    100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }
+    20% {
+        transform: scaleY(1);
+        -webkit-transform: scaleY(1);
+    }
+}
+
+.sk-circle {
+    margin: 100px auto;
+    width: 10px;
+    height: 10px;
+    position: relative;
+    background: #000;
+    border-radius: 100%;
+    left: -18px;
+    -webkit-animation: sk 1.2s infinite ease-in-out;
+}
+
+@keyframes sk {
+    1% {
+        top: -15px;
+    }
+    2% {
+        top: 10px;
+    }
+    5% {
+        top: -20px;
+    }
+    10% {
+        left: -10px;
+    }
+    20% {
+        top: -25px;
+    }
+    30% {
+        left: 15px;
+        background: $primary;
+    }
+    35% {
+        top: 5px;
+    }
+    45% {
+        top: -5px;
+    }
+    50% {
+        top: -5px;
+    }
+    60% {
+        top: -6px;
+    }
+    70% {
+        top: 6px;
+    }
+    80% {
+        top: 6px;
+    }
+    60% {
+        top: -6px;
+    }
+}
+
+.animationload {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+    background-color: #fff;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -100px;
+    width: 200px;
+    height: 200px;
+    // background-image: url("../images/logo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+}
