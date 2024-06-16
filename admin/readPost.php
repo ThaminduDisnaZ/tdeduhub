@@ -5,14 +5,8 @@ if (isset($_SESSION["admin"])) {
 
     $adata = $_SESSION["admin"];
 
-    $d = new DateTime();
-    $tz = new DateTimeZone("Asia/Colombo");
-    $d->setTimezone($tz);
-    $date = $d->format("Y-m-d H:i:s");
-
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -300,388 +294,176 @@ if (isset($_SESSION["admin"])) {
                             <a href="javascript:;" class="text-primary hover:underline">Dashboard</a>
                         </li>
                         <li class="before:content-['/'] ltr:before:mr-1 rtl:before:ml-1">
-                            <span>Sales</span>
+                            <span>Post Reqest</span>
                         </li>
                     </ul>
 
                     <div class="pt-5">
 
                         <?php
-
-
-$uvrs = Database::search("SELECT * FROM `user_visit` ");
-$uvd = $uvrs->fetch_assoc();
-
-$urs = Database::search("SELECT * FROM `user` ");
-
-$udn = $urs->num_rows;
-
-$wrs = Database::search("SELECT * FROM `writer` ");
-
-$wn = $wrs->num_rows;
-
-
-$prs = Database::search("SELECT * FROM `post` ");
-
-$pn = $prs->num_rows;
+$pid = $_GET["id"];
 
 ?>
 
 
-                        <div class="mb-6 grid grid-cols-1 gap-6 text-white sm:grid-cols-2 xl:grid-cols-4">
-                            <!-- Users Visit -->
-                            <div class="panel bg-gradient-to-r from-cyan-500 to-cyan-400">
-                                <div class="flex justify-between">
-                                    <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">Users Visit</div>
-                                    <div x-data="dropdown" @click.outside="open = false" class="dropdown">
-                                        <a href="javascript:;" @click="toggle">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-5 w-5 opacity-70 hover:opacity-80">
-                                                <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                <circle opacity="0.5" cx="12" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                                <circle cx="19" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                            </svg>
-                                        </a>
-                                        <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
-                                            class="text-black ltr:right-0 rtl:left-0 dark:text-white-dark">
-                                            <li><a href="javascript:;" @click="toggle">View Report</a></li>
-                                            <li><a href="javascript:;" @click="toggle">Edit Report</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="mt-5 flex items-center">
-                                    <div class="text-3xl font-bold ltr:mr-3 rtl:ml-3"><?php echo $uvd["count"];   ?>
-                                    </div>
-                                    <div class="badge bg-white/30">+ 2.35%</div>
-                                </div>
-                                <div class="mt-5 flex items-center font-semibold">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 ltr:mr-2 rtl:ml-2">
-                                        <path opacity="0.5"
-                                            d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                        <path
-                                            d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                    </svg>
-                                    Last Week 44,700
-                                </div>
-                            </div>
-
-                            <!-- Sessions -->
-                            <div class="panel bg-gradient-to-r from-violet-500 to-violet-400">
-                                <div class="flex justify-between">
-                                    <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">Registered Users</div>
-                                    <div x-data="dropdown" @click.outside="open = false" class="dropdown">
-                                        <a href="javascript:;" @click="toggle">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-5 w-5 opacity-70 hover:opacity-80">
-                                                <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                <circle opacity="0.5" cx="12" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                                <circle cx="19" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                            </svg>
-                                        </a>
-                                        <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
-                                            class="text-black ltr:right-0 rtl:left-0 dark:text-white-dark">
-                                            <li><a href="javascript:;" @click="toggle">View Report</a></li>
-                                            <li><a href="javascript:;" @click="toggle">Edit Report</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="mt-5 flex items-center">
-                                    <div class="text-3xl font-bold ltr:mr-3 rtl:ml-3"><?php echo $udn ?></div>
-                                    <div class="badge bg-white/30">- 2.35%</div>
-                                </div>
-                                <div class="mt-5 flex items-center font-semibold">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 ltr:mr-2 rtl:ml-2">
-                                        <path opacity="0.5"
-                                            d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                        <path
-                                            d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                    </svg>
-                                    Last Week 84,709
-                                </div>
-                            </div>
-
-                            <!-- Time On-Site -->
-                            <div class="panel bg-gradient-to-r from-blue-500 to-blue-400">
-                                <div class="flex justify-between">
-                                    <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">Registered Writers</div>
-                                    <div x-data="dropdown" @click.outside="open = false" class="dropdown">
-                                        <a href="javascript:;" @click="toggle">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-5 w-5 opacity-70 hover:opacity-80">
-                                                <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                <circle opacity="0.5" cx="12" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                                <circle cx="19" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                            </svg>
-                                        </a>
-                                        <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
-                                            class="text-black ltr:right-0 rtl:left-0 dark:text-white-dark">
-                                            <li><a href="javascript:;" @click="toggle">View Report</a></li>
-                                            <li><a href="javascript:;" @click="toggle">Edit Report</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="mt-5 flex items-center">
-                                    <div class="text-3xl font-bold ltr:mr-3 rtl:ml-3"><?php echo $wn ?></div>
-                                    <div class="badge bg-white/30">+ 1.35%</div>
-                                </div>
-                                <div class="mt-5 flex items-center font-semibold">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 ltr:mr-2 rtl:ml-2">
-                                        <path opacity="0.5"
-                                            d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                        <path
-                                            d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                    </svg>
-                                    Last Week 37,894
-                                </div>
-                            </div>
-
-                            <!-- Bounce Rate -->
-                            <div class="panel bg-gradient-to-r from-fuchsia-500 to-fuchsia-400">
-                                <div class="flex justify-between">
-                                    <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">Total Post</div>
-                                    <div x-data="dropdown" @click.outside="open = false" class="dropdown">
-                                        <a href="javascript:;" @click="toggle">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-5 w-5 opacity-70 hover:opacity-80">
-                                                <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                <circle opacity="0.5" cx="12" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                                <circle cx="19" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                            </svg>
-                                        </a>
-                                        <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
-                                            class="text-black ltr:right-0 rtl:left-0 dark:text-white-dark">
-                                            <li><a href="javascript:;" @click="toggle">View Report</a></li>
-                                            <li><a href="javascript:;" @click="toggle">Edit Report</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="mt-5 flex items-center">
-                                    <div class="text-3xl font-bold ltr:mr-3 rtl:ml-3"><?php echo $pn?></div>
-                                    <div class="badge bg-white/30">- 0.35%</div>
-                                </div>
-                                <div class="mt-5 flex items-center font-semibold">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 ltr:mr-2 rtl:ml-2">
-                                        <path opacity="0.5"
-                                            d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                        <path
-                                            d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                    </svg>
-                                    Last Week 50.01%
-                                </div>
-                            </div>
-                        </div>
 
 
-                        <!-- hover table -->
-                        <h5 class="text-lg font-semibold dark:text-white-light text-center">Writers</h5>
-                        <div class="table-responsive mb-30">
-                            <table class="table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Date</th>
-                                        <th>Sale</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                        <div class="dvanimation animate__animated p-6" :class="[$store.app.animation]">
+                            <!-- start main content section -->
+                            <div x-data="invoicePreview">
+                                <div class="mb-6 flex flex-wrap items-center justify-center gap-4 lg:justify-end">
+                                    <button type="button" class="btn btn-info gap-2">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                            <path
+                                                d="M17.4975 18.4851L20.6281 9.09373C21.8764 5.34874 22.5006 3.47624 21.5122 2.48782C20.5237 1.49939 18.6511 2.12356 14.906 3.37189L5.57477 6.48218C3.49295 7.1761 2.45203 7.52305 2.13608 8.28637C2.06182 8.46577 2.01692 8.65596 2.00311 8.84963C1.94433 9.67365 2.72018 10.4495 4.27188 12.0011L4.55451 12.2837C4.80921 12.5384 4.93655 12.6658 5.03282 12.8075C5.22269 13.0871 5.33046 13.4143 5.34393 13.7519C5.35076 13.9232 5.32403 14.1013 5.27057 14.4574C5.07488 15.7612 4.97703 16.4131 5.0923 16.9147C5.32205 17.9146 6.09599 18.6995 7.09257 18.9433C7.59255 19.0656 8.24576 18.977 9.5522 18.7997L9.62363 18.79C9.99191 18.74 10.1761 18.715 10.3529 18.7257C10.6738 18.745 10.9838 18.8496 11.251 19.0285C11.3981 19.1271 11.5295 19.2585 11.7923 19.5213L12.0436 19.7725C13.5539 21.2828 14.309 22.0379 15.1101 21.9985C15.3309 21.9877 15.5479 21.9365 15.7503 21.8474C16.4844 21.5244 16.8221 20.5113 17.4975 18.4851Z"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                            <path opacity="0.5" d="M6 18L21 3" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" />
+                                        </svg>
+                                        Send Invoice
+                                    </button>
+
+                                    <button type="button" class="btn btn-primary gap-2" @click="print">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                            <path
+                                                d="M6 17.9827C4.44655 17.9359 3.51998 17.7626 2.87868 17.1213C2 16.2426 2 14.8284 2 12C2 9.17157 2 7.75736 2.87868 6.87868C3.75736 6 5.17157 6 8 6H16C18.8284 6 20.2426 6 21.1213 6.87868C22 7.75736 22 9.17157 22 12C22 14.8284 22 16.2426 21.1213 17.1213C20.48 17.7626 19.5535 17.9359 18 17.9827"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                            <path opacity="0.5" d="M9 10H6" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" />
+                                            <path d="M19 14L5 14" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" />
+                                            <path
+                                                d="M18 14V16C18 18.8284 18 20.2426 17.1213 21.1213C16.2426 22 14.8284 22 12 22C9.17157 22 7.75736 22 6.87868 21.1213C6 20.2426 6 18.8284 6 16V14"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                            <path opacity="0.5"
+                                                d="M17.9827 6C17.9359 4.44655 17.7626 3.51998 17.1213 2.87868C16.2427 2 14.8284 2 12 2C9.17158 2 7.75737 2 6.87869 2.87868C6.23739 3.51998 6.06414 4.44655 6.01733 6"
+                                                stroke="currentColor" stroke-width="1.5" />
+                                            <circle opacity="0.5" cx="17" cy="10" r="1" fill="currentColor" />
+                                            <path opacity="0.5" d="M15 16.5H9" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" />
+                                            <path opacity="0.5" d="M13 19H9" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" />
+                                        </svg>
+                                        Print
+                                    </button>
+
+                                    <button type="button" class="btn btn-success gap-2">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                            <path opacity="0.5"
+                                                d="M17 9.00195C19.175 9.01406 20.3529 9.11051 21.1213 9.8789C22 10.7576 22 12.1718 22 15.0002V16.0002C22 18.8286 22 20.2429 21.1213 21.1215C20.2426 22.0002 18.8284 22.0002 16 22.0002H8C5.17157 22.0002 3.75736 22.0002 2.87868 21.1215C2 20.2429 2 18.8286 2 16.0002L2 15.0002C2 12.1718 2 10.7576 2.87868 9.87889C3.64706 9.11051 4.82497 9.01406 7 9.00195"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                                            <path d="M12 2L12 15M12 15L9 11.5M12 15L15 11.5" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            </path>
+                                        </svg>
+                                        Download
+                                    </button>
+
+                                    <a href="apps-invoice-add.html" class="btn btn-secondary gap-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                        Create
+                                    </a>
+
+                                    <a href="apps-invoice-edit.html" class="btn btn-warning gap-2">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                            <path opacity="0.5"
+                                                d="M22 10.5V12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2H13.5"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                                            <path
+                                                d="M17.3009 2.80624L16.652 3.45506L10.6872 9.41993C10.2832 9.82394 10.0812 10.0259 9.90743 10.2487C9.70249 10.5114 9.52679 10.7957 9.38344 11.0965C9.26191 11.3515 9.17157 11.6225 8.99089 12.1646L8.41242 13.9L8.03811 15.0229C7.9492 15.2897 8.01862 15.5837 8.21744 15.7826C8.41626 15.9814 8.71035 16.0508 8.97709 15.9619L10.1 15.5876L11.8354 15.0091C12.3775 14.8284 12.6485 14.7381 12.9035 14.6166C13.2043 14.4732 13.4886 14.2975 13.7513 14.0926C13.9741 13.9188 14.1761 13.7168 14.5801 13.3128L20.5449 7.34795L21.1938 6.69914C22.2687 5.62415 22.2687 3.88124 21.1938 2.80624C20.1188 1.73125 18.3759 1.73125 17.3009 2.80624Z"
+                                                stroke="currentColor" stroke-width="1.5"></path>
+                                            <path opacity="0.5"
+                                                d="M16.6522 3.45508C16.6522 3.45508 16.7333 4.83381 17.9499 6.05034C19.1664 7.26687 20.5451 7.34797 20.5451 7.34797M10.1002 15.5876L8.4126 13.9"
+                                                stroke="currentColor" stroke-width="1.5"></path>
+                                        </svg>
+                                        Edit
+                                    </a>
+                                </div>
+                                <div class="panel">
+                                    <div class="flex flex-wrap justify-between gap-4 px-4">
+                                        <div class="text-2xl font-semibold uppercase">Post ID :- <?php echo $pid?></div>
+
+                                    </div>
 
                                     <?php
+                            
+                            $prs = Database::search("SELECT * FROM `post` WHERE `post_id` = '".$pid."' ");
+                            $pdata = $prs->fetch_assoc();
 
-for ($i=0; $i < $wn; $i++) { 
-    $wd = $wrs->fetch_assoc();
-    ?>
-                                    <tr>
-                                        <td><?php echo $wd["name"] ?></td>
-
-                                        <td><?php echo $wd["date"] ?></td>
-                                        <td><?php echo $wd["email"] ?></td>
-                                        <td id="wstatus">
-                                            <?php
-if ($wd["writer_status_id"] == "1") {
-   ?><span class="badge bg-success">Active</span><?php
-} else {
-    ?><span class="badge bg-danger">Inactive</span><?php
-}
-
-?>
-
-
-                                        </td>
-                                        <td><button id="wsb"
-                                                onclick="changeWriterStatus(<?php echo $wd["writer_id"] ?>);"
-                                                class="btn btn-warning"><a class="fa-lock">Change Status</a></button>
-                                        </td>
-
-                                    </tr>
-
-                                    <?php
-}
-
-?>
-
-
-
-                                </tbody>
-                            </table>
-                        </div>
-
-
-                        <!-- hover table -->
-                        <h5 class="text-lg font-semibold dark:text-white-light text-center mt-10">Users</h5>
-                        <div class="table-responsive mb-30">
-                            <table class="table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Date</th>
-                                        <th>Sale</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <?php
-
-for ($i=0; $i < $udn; $i++) { 
-    $ud = $urs->fetch_assoc();
-    ?>
-                                    <tr>
-                                        <td><?php echo $ud["name"] ?></td>
-
-                                        <td><?php echo $ud["date"] ?></td>
-                                        <td><?php echo $ud["email"] ?></td>
-
-                                        <td id="ustatus">
-                                            <?php
-if ($ud["user_status_id"] == "1") {
-   ?><span class="badge bg-success">Active</span><?php
-} else {
-    ?><span class="badge bg-danger">Inactive</span><?php
-}
-
-?>
-
-
-                                        </td>
-
-                                        <td><button id="wsb" onclick="changeUserStatus(<?php echo $ud["user_id"] ?>);"
-                                                class="btn btn-warning"><a class="fa-lock">Change Status</a></button>
-                                        </td>
-
-                                    </tr>
-
-                                    <?php
-}
-
-?>
-
-
-
-                                </tbody>
-                            </table>
-                        </div>
-
-
-                        <h5 class="text-lg font-semibold dark:text-white-light text-center mt-10">Recenly added Posts
-                        </h5>
-
-
-                        <div class="mb-3 mt-3 grid grid-cols-1 gap-6 text-white sm:grid-cols-2 xl:grid-cols-4">
-
-
-                            <?php
-
-$prsr = Database::search("SELECT * FROM `post` ORDER BY `date` DESC LIMIT 8");
-
-$pnr = $prsr->num_rows;
-
-                        
-                        for ($i=0; $i < $pnr ; $i++) { 
-                            $pdr = $prsr->fetch_assoc();
-
+                            $wrs = Database::search("SELECT * FROM `writer` WHERE `writer_id` = '".$pdata["writer_id"]."' ");
+                            $wdata = $wrs->fetch_assoc();
+                            
                             ?>
 
-                            <!-- card 2 -->
-                            <div
-                                class="max-w-[19rem] w-full bg-white shadow-[4px_6px_10px_-3px_#bfc9d4] rounded border border-[#e0e6ed] dark:border-[#1b2e4b] dark:bg-[#191e3a] dark:shadow-none">
-                                <div class="py-7 px-6">
-                                    <div class="-mt-7 mb-7 -mx-6 rounded-tl rounded-tr h-[215px] overflow-hidden">
-                                        <img src="../<?php echo $pdr["image"]  ?>" alt="image"
-                                            class="w-full h-full object-cover" />
+                                    <div class="px-4 ltr:text-right rtl:text-left">
+                                        <div class="mt-6 space-y-1 text-white-dark">
+                                            <div><?php echo $wdata["name"] ?></div>
+                                            <div><?php echo $wdata["email"] ?></div>
+                                            <div><?php echo $wdata["mobile"] ?></div>
+                                            <div><?php echo $wdata["date"] ?></div>
+                                        </div>
                                     </div>
-                                    <h5 class="text-[#3b3f5c] text-xl font-semibold mb-4 dark:text-white-light">
-                                        <?php echo $pdr["title"]  ?></h5>
-                                    <p class="text-white-dark"><?php echo $pdr["summery"]  ?></p>
+                                    <center>
 
-                                    <p class="text-white-dark mt-6"><?php echo $pdr["date"]  ?></p>
-
-                                    <div
-                                        class="mb-3 mt-3 grid grid-cols-6 gap-6 text-white sm:grid-cols-6 xl:grid-cols-6">
-                                        <button type="button" class="btn btn-primary ">Read Post</button>
-
-                                        <?php
-        
-        if ($pdr["post_status_id"] == "1") {
-           ?> <button type="button" class="btn btn-success ">Active</button><?php
-        } else {
-            ?> <button type="button" class="btn btn-danger ">Inactive</button><?php
-        }
-        
-
-        ?>
+                                        <div class="max-h-56 overflow-hidden mb-9">
+                                            <img src="../<?php echo $pdata["image"] ?>" alt="..."
+                                                class=" object-cover  " width="500px">
+                                        </div>
 
 
 
+                                    </center>
 
-
+                                    <div class="text-center text-5xl text-warning mb-10"><?php  echo $pdata["title"] ?>
                                     </div>
 
+                                    <div class="text-center text-2xl text-white-light"><?php  echo $pdata["summery"] ?>
+                                    </div>
+
+                                    <hr class="my-6 border-[#e0e6ed] dark:border-[#1b2e4b]" />
+                                    <div class="flex flex-col flex-wrap justify-between gap-6 lg:flex-row">
+
+                                        <div class="text-xl text-white-light"><?php  echo $pdata["content"] ?></div>
+                                    </div>
+                                    <hr class="my-6 border-[#e0e6ed] dark:border-[#1b2e4b]" />
+                                    <div class="flex flex-col flex-wrap justify-between gap-6 lg:flex-row">
+
+
+
+
+
+                                        <button onclick="papprove(<?php echo $pid ?>);" type="button" class="btn btn-success gap-2">
+                                            <i class="fa fa-check"></i>
+                                            Approve Post
+                                        </button>
+
+
+
+
+
+                                        <button onclick="pedit(<?php echo $pid ?>);" type="button" class="btn btn-warning gap-2">
+                                            <i class="fa fa-pencil"></i>
+                                            Edit Post
+                                        </button>
+
+                                        <button onclick="pdisapprove(<?php echo $pid ?>);" type="button" class="btn btn-danger gap-2">
+                                            <i class="fa fa-xmark"></i>
+                                            Disapprove Post
+                                        </button>
+
+                                    </div>
                                 </div>
+                                <!-- end main content section -->
                             </div>
-
-
-
-                            <?php
-
-
-                        }
-                        
-                        
-                        ?>
-
-
-
-
-
-
-
 
 
 
@@ -708,7 +490,6 @@ $pnr = $prsr->num_rows;
         <script defer src="assets/js/apexcharts.js"></script>
         <script defer src="admin.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
         <script>
         document.addEventListener('alpine:init', () => {
             // main section
@@ -942,8 +723,7 @@ $pnr = $prsr->num_rows;
 
                         // sales by category
                         this.salesByCategory = new ApexCharts(this.$refs.salesByCategory,
-                            this
-                            .salesByCategoryOptions);
+                            this.salesByCategoryOptions);
                         this.$refs.salesByCategory.innerHTML = '';
                         this.salesByCategory.render();
 
@@ -982,15 +762,13 @@ $pnr = $prsr->num_rows;
                         series: [{
                                 name: 'Income',
                                 data: [16800, 16800, 15500, 17800, 15500, 17000, 19000,
-                                    16000,
-                                    15000, 17000, 14000, 17000
+                                    16000, 15000, 17000, 14000, 17000
                                 ],
                             },
                             {
                                 name: 'Expenses',
                                 data: [16500, 17500, 16200, 17300, 16000, 19500, 16000,
-                                    17000,
-                                    16000, 19000, 18000, 19000
+                                    17000, 16000, 19000, 18000, 19000
                                 ],
                             },
                         ],
@@ -1147,13 +925,11 @@ $pnr = $prsr->num_rows;
                             show: true,
                             width: 25,
                             colors: isDark ? ['#0e1726', '#0e1726', '#0e1726', '#0e1726'] : [
-                                '#fff',
-                                '#fff', '#fff'
+                                '#fff', '#fff', '#fff'
                             ],
                         },
                         colors: isDark ? ['#5c1ac3', '#e2a03f', '#e7515a', '#e2a03f'] : [
-                            '#e2a03f',
-                            '#5c1ac3', '#e7515a'
+                            '#e2a03f', '#5c1ac3', '#e7515a'
                         ],
                         legend: {
                             position: 'bottom',
@@ -1195,8 +971,7 @@ $pnr = $prsr->num_rows;
                                             fontSize: '29px',
                                             formatter: (w) => {
                                                 return w.globals.seriesTotals.reduce(
-                                                    function(a,
-                                                        b) {
+                                                    function(a, b) {
                                                         return a + b;
                                                     }, 0);
                                             },

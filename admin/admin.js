@@ -184,3 +184,121 @@ function changeUserStatus(uid){
     
 }
 
+function papprove(pid){
+
+
+    Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "Please Wait",
+        showConfirmButton: false,
+        timer: 3500
+      });
+
+
+    var f = new FormData();
+
+    f.append("pid",pid);
+
+    var reqest = new XMLHttpRequest();
+
+    reqest.onreadystatechange = function(){
+
+        if (reqest.readyState == 4 && reqest.status == 200)  {
+            var response = reqest.responseText;
+            
+            if (response == "ok") {
+                Swal.fire({
+                    icon: "success",
+                    title: "Post Status",
+                    text: "User Approved Successfully",
+                   
+                  });
+                 
+            } else{
+
+                Swal.fire({
+                    icon: "warning",
+                    title: "Post Status",
+                    text: response,
+                   
+                  });
+            }
+
+
+        }
+
+    }
+
+
+
+
+    reqest.open("POST","postApproveProcess.php",true);
+    reqest.send(f);
+
+
+}
+
+function pedit(pid){
+
+
+    Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "Please Wait",
+        showConfirmButton: false,
+        timer: 3500
+      });
+
+
+    var f = new FormData();
+
+    f.append("pid",pid);
+
+    var reqest = new XMLHttpRequest();
+
+    reqest.onreadystatechange = function(){
+
+        if (reqest.readyState == 4 && reqest.status == 200)  {
+            var response = reqest.responseText;
+            alert(response);
+        }
+
+    }
+
+    reqest.open("POST","postEditProcess.php",true);
+    reqest.send(f);
+}
+
+function pdisapprove(pid){
+
+
+
+     Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "Please Wait",
+        showConfirmButton: false,
+        timer: 3500
+      });
+
+
+
+    var f = new FormData();
+
+    f.append("pid",pid);
+
+    var reqest = new XMLHttpRequest();
+
+    reqest.onreadystatechange = function(){
+
+        if (reqest.readyState == 4 && reqest.status == 200)  {
+            var response = reqest.responseText;
+            alert(response);
+        }
+
+    }
+
+    reqest.open("POST","postDispproveProcess.php",true);
+    reqest.send(f);
+}
