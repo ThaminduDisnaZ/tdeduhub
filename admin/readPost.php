@@ -388,16 +388,30 @@ $pid = $_GET["id"];
                                         Edit
                                     </a>
                                 </div>
+
+                                <?php
+                                                            $prs = Database::search("SELECT * FROM `post` WHERE `post_id` = '".$pid."' ");
+                                                            $pdata = $prs->fetch_assoc();
+                                
+                                ?>
                                 <div class="panel">
                                     <div class="flex flex-wrap justify-between gap-4 px-4">
-                                        <div class="text-2xl font-semibold uppercase">Post ID :- <?php echo $pid?></div>
+                                        <div class="text-2xl font-semibold uppercase">Post ID :- <?php echo $pid?> <?php 
+                                        
+                                        if ($pdata["post_status_id"] == "1" ) {
+                                           ?>  <span class="badge bg-success">Active</span>  <?php
+                                        }else   if ($pdata["post_status_id"] == "2" ) {
+                                            ?>  <span class="badge bg-danger">Inactive</span>  <?php
+                                         }else   if ($pdata["post_status_id"] == "3" ) {
+                                            ?>  <span class="badge bg-warning">Not Approved</span>  <?php
+                                         }
+                                        
+                                        ?></div>
 
                                     </div>
 
                                     <?php
                             
-                            $prs = Database::search("SELECT * FROM `post` WHERE `post_id` = '".$pid."' ");
-                            $pdata = $prs->fetch_assoc();
 
                             $wrs = Database::search("SELECT * FROM `writer` WHERE `writer_id` = '".$pdata["writer_id"]."' ");
                             $wdata = $wrs->fetch_assoc();

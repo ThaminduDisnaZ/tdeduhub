@@ -88,7 +88,7 @@ function changeWriterStatus(wid){
         icon: "warning",
         title: "Please Wait",
         showConfirmButton: false,
-        timer: 6500
+        timer: 10000
       });
 
     var f = new FormData();
@@ -140,7 +140,7 @@ function changeUserStatus(uid){
         icon: "warning",
         title: "Please Wait",
         showConfirmButton: false,
-        timer: 3500
+        timer: 10000
       });
 
 
@@ -192,7 +192,7 @@ function papprove(pid){
         icon: "warning",
         title: "Please Wait",
         showConfirmButton: false,
-        timer: 3500
+        timer: 10000
       });
 
 
@@ -211,7 +211,7 @@ function papprove(pid){
                 Swal.fire({
                     icon: "success",
                     title: "Post Status",
-                    text: "User Approved Successfully",
+                    text: "Post Approved Successfully",
                    
                   });
                  
@@ -247,7 +247,7 @@ function pedit(pid){
         icon: "warning",
         title: "Please Wait",
         showConfirmButton: false,
-        timer: 3500
+        timer: 10000
       });
 
 
@@ -279,7 +279,7 @@ function pdisapprove(pid){
         icon: "warning",
         title: "Please Wait",
         showConfirmButton: false,
-        timer: 3500
+        timer: 10000
       });
 
 
@@ -294,7 +294,27 @@ function pdisapprove(pid){
 
         if (reqest.readyState == 4 && reqest.status == 200)  {
             var response = reqest.responseText;
-            alert(response);
+            
+            if (response == "ok") {
+                Swal.fire({
+                    icon: "success",
+                    title: "Post Status",
+                    text: "Post Disapproved Successfully",
+                   
+                  });
+                 
+            } else{
+
+                Swal.fire({
+                    icon: "warning",
+                    title: "Post Status",
+                    text: response,
+                   
+                  });
+            }
+
+            
+
         }
 
     }

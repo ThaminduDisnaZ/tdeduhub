@@ -618,7 +618,7 @@ if ($ud["user_status_id"] == "1") {
 
                             <?php
 
-$prsr = Database::search("SELECT * FROM `post` ORDER BY `date` DESC LIMIT 8");
+$prsr = Database::search("SELECT * FROM `post` WHERE `post_status_id` = '1' ORDER BY `date` DESC LIMIT 8");
 
 $pnr = $prsr->num_rows;
 
@@ -629,6 +629,7 @@ $pnr = $prsr->num_rows;
                             ?>
 
                             <!-- card 2 -->
+                             <a href="readPost.php?id=<?php echo $pdr["post_id"]?>">
                             <div
                                 class="max-w-[19rem] w-full bg-white shadow-[4px_6px_10px_-3px_#bfc9d4] rounded border border-[#e0e6ed] dark:border-[#1b2e4b] dark:bg-[#191e3a] dark:shadow-none">
                                 <div class="py-7 px-6">
@@ -667,7 +668,7 @@ $pnr = $prsr->num_rows;
                             </div>
 
 
-
+                            </a>
                             <?php
 
 

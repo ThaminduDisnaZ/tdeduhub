@@ -432,26 +432,37 @@ $pn = $prs->num_rows;
                         <div class="mb-3 mt-3 grid grid-cols-1 gap-6 text-white sm:grid-cols-2 xl:grid-cols-3">
 <?php
 
-for ($i=0; $i < $pn ; $i++) { 
-    $pdata = $prs->fetch_assoc();
-  ?> <!-- card 4 -->
-  <a href="readPost.php?id=<?php echo $pdata["post_id"] ?>">
-  <div class="max-w-[30rem] w-full bg-white shadow-[4px_6px_10px_-3px_#bfc9d4] rounded border border-[#e0e6ed] dark:border-[#1b2e4b] dark:bg-[#191e3a] dark:shadow-none">
-      <div class="p-5 flex items-center flex-col sm:flex-row">
-          <div class="mb-5 w-20 h-20 rounded-full overflow-hidden">
-              <img src="../<?php echo $pdata["image"] ?>" alt="image" class="w-full h-full object-cover" />
-          </div>
-          <div class="flex-1 ltr:sm:pl-5 rtl:sm:pr-5 text-center sm:text-left">
-              <h5 class="text-[#3b3f5c] text-[15px] font-semibold mb-2 dark:text-white-light"><?php echo $pdata["title"] ?></h5>
-              <p class="mb-2 text-white-dark"><?php echo $pdata["date"] ?></p>
-              <span class="badge bg-primary rounded-full">4.5</span>
-              <p class="font-semibold text-white-dark mt-4 sm:mt-8"><?php echo $pdata["summery"] ?></p>
+if ($pn > 0) {
+    for ($i=0; $i < $pn ; $i++) { 
+        $pdata = $prs->fetch_assoc();
+      ?> <!-- card 4 -->
+      <a href="readPost.php?id=<?php echo $pdata["post_id"] ?>">
+      <div class="max-w-[30rem] w-full bg-white shadow-[4px_6px_10px_-3px_#bfc9d4] rounded border border-[#e0e6ed] dark:border-[#1b2e4b] dark:bg-[#191e3a] dark:shadow-none">
+          <div class="p-5 flex items-center flex-col sm:flex-row">
+              <div class="mb-5 w-20 h-20 rounded-full overflow-hidden">
+                  <img src="../<?php echo $pdata["image"] ?>" alt="image" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex-1 ltr:sm:pl-5 rtl:sm:pr-5 text-center sm:text-left">
+                  <h5 class="text-[#3b3f5c] text-[15px] font-semibold mb-2 dark:text-white-light"><?php echo $pdata["title"] ?></h5>
+                  <p class="mb-2 text-white-dark"><?php echo $pdata["date"] ?></p>
+                  <span class="badge bg-primary rounded-full">4.5</span>
+                  <p class="font-semibold text-white-dark mt-4 sm:mt-8"><?php echo $pdata["summery"] ?></p>
+              </div>
           </div>
       </div>
-  </div>
-  </a>
-  <?php
+      </a>
+      <?php
+    }
+} else {
+   ?>
+   
+   <h1 class="text-5xl col-12 text-center"><i class="fa fa-paper-plane"></i> Not new Reqests</h1>
+   
+   <?php
 }
+
+
+
 
 ?>
 
