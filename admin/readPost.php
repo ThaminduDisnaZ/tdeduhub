@@ -463,12 +463,12 @@ $pid = $_GET["id"];
 
 
 
-
-                                        <button onclick="pedit(<?php echo $pid ?>);" type="button" class="btn btn-warning gap-2">
+<a href="editPost.php?id=<?php echo $pid ?>">
+                                        <button type="button" class="btn btn-warning gap-2">
                                             <i class="fa fa-pencil"></i>
                                             Edit Post
                                         </button>
-
+                                        </a>
                                         <button onclick="pdisapprove(<?php echo $pid ?>);" type="button" class="btn btn-danger gap-2">
                                             <i class="fa fa-xmark"></i>
                                             Disapprove Post

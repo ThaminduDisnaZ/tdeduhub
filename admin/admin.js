@@ -241,14 +241,9 @@ function papprove(pid){
 
 function pedit(pid){
 
+var content =  quill.root.innerHTML;
 
-    Swal.fire({
-        position: "top-end",
-        icon: "warning",
-        title: "Please Wait",
-        showConfirmButton: false,
-        timer: 10000
-      });
+alert(content);
 
 
     var f = new FormData();
@@ -261,7 +256,7 @@ function pedit(pid){
 
         if (reqest.readyState == 4 && reqest.status == 200)  {
             var response = reqest.responseText;
-            alert(response);
+           
         }
 
     }
