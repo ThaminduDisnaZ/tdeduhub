@@ -107,73 +107,88 @@ if (isset($_SESSION["admin"])) {
 
                     <div class="pt-5">
 
+                        <br>
 
-                        <!-- striped table -->
+                        <h1 class="text-2xl">Add New Category</h1>
+
+
+
+                        <input type="text" placeholder="Category Name" id="cname" class="form-input mb-3" required />
+
+                        <textarea id="" rows="3" class="form-textarea" id="cdes" placeholder="Enter Category Description"
+                            required></textarea>
+
+                        <button onclick="addCat();" class="btn btn-success mb-8">Add</button>
+
+
+
+
                         <div class="table-responsive">
-                            <table class="table-striped">
+                            <table>
                                 <thead>
                                     <tr>
-                                        <th class="text-center">Post ID</th>
-                                        <th class="text-center">Image</th>
-                                        <th class="text-center">Name</th>
-                                        <th class="text-center">Date</th>
-                                        <th class="text-center">Category</th>
+                                        <th>Category ID</th>
+                                        <th>Category Name</th>
+                                        <th>Category Description</th>
                                         <th class="text-center">Status</th>
-                                        <th class="text-center">Action</th>
-
-
+                                        <th class="text-center">Action </th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                     <?php
         
-        $prs = Database::search("SELECT * FROM `post` ORDER BY `category_id` ");
-        $pnum = $prs->num_rows;
+        $crs = Database::search("SELECT * FROM `category` ");
+        $cnum = $crs->num_rows;
+
+        for ($i=0; $i < $cnum ; $i++) { 
+                $cdata = $crs->fetch_assoc();
+
+                ?>
+
+                                    <td><?php echo $cdata["category_id"] ?></td>
+                                    <td><?php echo $cdata["category"] ?></td>
+                                    <td><?php echo $cdata["description"] ?></td>
+                                    <td class="text-center">
+
+                                        <?php 
+           
+           if ($cdata["category_status_id"] == "1") {
+          ?> <span class="badge bg-success rounded-full">Active</span> <?php
+           }else if($cdata["category_status_id"] == "2") {
+            ?> <span class="badge bg-danger rounded-full">Inactive</span> <?php
+             }else if($cdata["category_status_id"] == "3") {
+                ?> <span class="badge bg-warning rounded-full">Reqested</span> <?php
+                 }
+           
+           ?>
+
+                                    </td>
+                                    <td>
 
 
 
-        for ($i=0; $i < $pnum; $i++) { 
-            $pdata = $prs->fetch_assoc();
-            $crs = Database::search("SELECT * FROM `category` WHERE `category_id` = '".$pdata["category_id"]."' ");
-            $cdata = $crs->fetch_assoc();
-        ?>
-                                    <tr>
-                                        <td class="text-center"><?php echo $pdata["post_id"] ?></td>
-                                        <td><img class="w-20 h-20 rounded-md overflow-hidden object-cover"
-                                                src="../<?php echo $pdata["image"] ?>" alt="" /></td>
-                                        <td class="text-center"><?php echo $pdata["title"] ?></td>
-                                        <td class="text-center"><?php echo $pdata["date"] ?></td>
-                                        <td class="text-center"><?php echo $cdata["category"] ?></td>
-                                        <td class="text-center"><?php 
-                    
-                    if ($pdata["post_status_id"] == "1") {
-                      ?> <span class="badge bg-success rounded-full">Active</span> <?php
-                    }else    if ($pdata["post_status_id"] == "2") {
-                        ?> <span class="badge bg-danger rounded-full">Not Active</span> <?php
-                      }else    if ($pdata["post_status_id"] == "3") {
-                        ?> <span class="badge bg-warning rounded-full">Reqested</span> <?php
-                      }
-                    
-                    ?></td>
-                                        <td class="text-center">
-                                            <div class="grid grid-cols-1 gap-2 mb-5 lg:grid-cols-3 mt-6">
-                                                <a href="readPost.php?id=<?php echo $pdata['post_id']; ?>"
-                                                    class="btn btn-warning">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-                                                <button onclick="papprove(<?php echo $pdata['post_id']; ?>);"
-                                                    class="btn btn-success">
-                                                    <i class="fa fa-check"></i>
-                                                </button>
-                                                <button onclick="pdisapprove(<?php echo $pdata['post_id']; ?>);"
-                                                    class="btn btn-danger">
-                                                    <i class="fa fa-close"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <div class="grid grid-cols-1 gap-2 mb-1 lg:grid-cols-3 mt-1">
 
+                                            <button class="btn btn-warning">
+                                                <i class="fa fa-pencil"></i>
+                                            </button>
+
+                                            <button class="btn btn-success">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+
+                                            <button class="btn btn-danger">
+                                                <i class="fa fa-close"></i>
+                                            </button>
+
+                                        </div>
+
+
+
+
+
+                                    </td>
 
                                     <?php
         }
@@ -183,12 +198,10 @@ if (isset($_SESSION["admin"])) {
 
 
 
+
                                 </tbody>
                             </table>
                         </div>
-
-
-
 
 
 
@@ -212,7 +225,7 @@ if (isset($_SESSION["admin"])) {
     <script defer src="assets/js/alpine.min.js"></script>
     <script src="assets/js/custom.js"></script>
     <script defer src="assets/js/apexcharts.js"></script>
-    <script defer src="admin.js"></script>
+    <script src="admin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
     document.addEventListener('alpine:init', () => {

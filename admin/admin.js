@@ -351,3 +351,35 @@ function pdisapprove(pid){
     reqest.open("POST","postDispproveProcess.php",true);
     reqest.send(f);
 }
+
+
+function addCat(){
+
+   var name = document.getElementById("cname");
+   var des = document.getElementById("cdes");
+
+   var f = new FormData();
+
+   f.append("name",name.value);
+   f.append("des",des.value);
+
+   var reqest = new XMLHttpRequest();
+
+   reqest.onreadystatechange = function (){
+
+    if (reqest.readyState == 4 && reqest.status == 200) {
+        var response = reqest.responseText;
+        alert(response);
+    }
+
+   }
+
+
+
+
+   reqest.open("POST","addCategoryProcess.php",true);
+   reqest.send(f);
+
+
+
+}

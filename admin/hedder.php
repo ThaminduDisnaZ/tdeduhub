@@ -1,9 +1,5 @@
                 <!-- start header section -->
             
-                <?php
-                require "../connection.php";
-                
-                ?>
             
             
                 <header class="z-40" :class="{'dark' : $store.app.semidark && $store.app.menu === 'horizontal'}">
