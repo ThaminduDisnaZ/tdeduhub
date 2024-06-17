@@ -230,9 +230,6 @@ function papprove(pid){
 
     }
 
-
-
-
     reqest.open("POST","postApproveProcess.php",true);
     reqest.send(f);
 
@@ -284,7 +281,21 @@ function pedit(pid) {
     reqest.onreadystatechange = function () {
         if (reqest.readyState == 4 && reqest.status == 200) {
             var response = reqest.responseText;
-            alert(response);
+           if (response == "ok") {
+            Swal.fire({
+                icon: "success",
+                title: "Post Change Status",
+                text: "Post Changed Successfully",
+               
+              });
+           } else {
+            Swal.fire({
+                icon: "warning",
+                title: "Post Change Status",
+                text: response,
+               
+              });
+           }
         }
     }
 

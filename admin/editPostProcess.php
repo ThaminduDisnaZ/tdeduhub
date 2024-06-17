@@ -4,9 +4,17 @@ require "../connection.php";
 $pid = $_POST["pid"];
 $content = $_POST["content"];
 $title = $_POST["title"];
-$summery = $_POST["summery"];
+$summery = $_POST["summery"]; 
 $cat = $_POST["cat"];
 $allowed_img_extensions = array("image/jpg", "image/jpeg", "image/png", "image/svg+xml");
+
+$prs = Database::search("SELECT * FROM `post` WHERE `post_id` = '" . $pid . "' ");
+$pdata = $prs->fetch_assoc();
+
+
+
+
+
 
 if (isset($_FILES['image'])) {
     $img_file = $_FILES['image']['name'];
@@ -27,25 +35,36 @@ if (isset($_FILES['image'])) {
         }
 
         $file_name = "/resources/post_images/" . $title . "_" . uniqid() . $new_img_extension;
-        move_uploaded_file($tmp_name,"..". $file_name);
+        move_uploaded_file($tmp_name, ".." . $file_name);
 
-     
-        Database::iud("UPDATE `post` SET `image` = '".$file_name."', `content` = '".$content."', `title` = '".$title."', `summery` = '".$summery."', `category_id` = '".$cat."' WHERE `post_id` = '".$pid."'");
 
-        echo "File uploaded and post updated successfully.\n";
+
+        if ( $file_name != $pdata["image"] ) {
+            echo "ok";
+        } else {
+        
+            echo "Not Changes";
+        }
+        
+
+
+        Database::iud("UPDATE `post` SET `image` = '" . $file_name . "', `content` = '" . $content . "', `title` = '" . $title . "', `summery` = '" . $summery . "', `category_id` = '" . $cat . "' WHERE `post_id` = '" . $pid . "'");
     } else {
         echo "File type not allowed: " . $file_type . "\n";
     }
 } else {
-   
-    Database::iud("UPDATE `post` SET `content` = '".$content."', `title` = '".$title."', `summery` = '".$summery."', `category_id` = '".$cat."' WHERE `post_id` = '".$pid."'");
-    echo "Post updated successfully without changing the image.\n";
+
+
+    if ($title != $pdata["title"] || $summery != $pdata["summery"] || $cat != $pdata["category_id"] || $content != $pdata["content"] ) {
+        echo "ok";
+    } else {
+    
+        echo "Not Changes";
+    }
+    
+
+
+
+    Database::iud("UPDATE `post` SET `content` = '" . $content . "', `title` = '" . $title . "', `summery` = '" . $summery . "', `category_id` = '" . $cat . "' WHERE `post_id` = '" . $pid . "'");
 }
 
-
-echo "Post ID: $pid\n";
-echo "Title: $title\n";
-echo "Content: $content\n";
-echo "Summary: $summery\n";
-echo "Category: $cat\n";
-?>
