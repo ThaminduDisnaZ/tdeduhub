@@ -115,21 +115,27 @@ if (isset($_SESSION["admin"])) {
 
                         <input type="text" placeholder="Category Name" id="cname" class="form-input mb-3" required />
 
-                        <textarea id="" rows="3" class="form-textarea" id="cdes" placeholder="Enter Category Description"
+                        <textarea rows="3" class="form-textarea" id="cdes" placeholder="Enter Category Description"
                             required></textarea>
 
                         <button onclick="addCat();" class="btn btn-success mb-8">Add</button>
 
 
+                        <div class="hidden" id="loadEditCat">
+
+                        
+                        </div>
 
 
-                        <div class="table-responsive">
+                       
+                        <div class="table-responsive" id="catTable">
                             <table>
                                 <thead>
                                     <tr>
                                         <th>Category ID</th>
                                         <th>Category Name</th>
                                         <th>Category Description</th>
+                                        <th class="text-center">Related Posts</th>
                                         <th class="text-center">Status</th>
                                         <th class="text-center">Action </th>
                                     </tr>
@@ -144,14 +150,18 @@ if (isset($_SESSION["admin"])) {
         for ($i=0; $i < $cnum ; $i++) { 
                 $cdata = $crs->fetch_assoc();
 
+                $prs = Database::search("SELECT * FROM `post` WHERE `category_id` = '". $cdata["category_id"]."' ");
+                $pnum = $prs->num_rows;
+
                 ?>
+                                    <tr>
+                                        <td><?php echo $cdata["category_id"] ?></td>
+                                        <td><?php echo $cdata["category"] ?></td>
+                                        <td><?php echo $cdata["description"] ?></td>
+                                        <td class="text-center"><?php echo $pnum ?></td>
+                                        <td class="text-center">
 
-                                    <td><?php echo $cdata["category_id"] ?></td>
-                                    <td><?php echo $cdata["category"] ?></td>
-                                    <td><?php echo $cdata["description"] ?></td>
-                                    <td class="text-center">
-
-                                        <?php 
+                                            <?php 
            
            if ($cdata["category_status_id"] == "1") {
           ?> <span class="badge bg-success rounded-full">Active</span> <?php
@@ -163,33 +173,37 @@ if (isset($_SESSION["admin"])) {
            
            ?>
 
-                                    </td>
-                                    <td>
+                                        </td>
+                                        <td>
 
 
 
-                                        <div class="grid grid-cols-1 gap-2 mb-1 lg:grid-cols-3 mt-1">
+                                            <div class="grid grid-cols-1 gap-2 mb-1 lg:grid-cols-3 mt-1">
 
-                                            <button class="btn btn-warning">
-                                                <i class="fa fa-pencil"></i>
-                                            </button>
+                                                <button class="btn btn-warning"
+                                                    onclick="editCat(<?php echo $cdata["category_id"]; ?>);">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
 
-                                            <button class="btn btn-success">
-                                                <i class="fa fa-check"></i>
-                                            </button>
+                                                <button class="btn btn-success"
+                                                    onclick="activeCat(<?php echo $cdata["category_id"]; ?>);">
+                                                    <i class="fa fa-check"></i>
+                                                </button>
 
-                                            <button class="btn btn-danger">
-                                                <i class="fa fa-close"></i>
-                                            </button>
-
-                                        </div>
-
-
-
+                                                <button class="btn btn-danger"
+                                                    onclick="inactiveCat(<?php echo $cdata["category_id"]; ?>);">
+                                                    <i class="fa fa-close"></i>
+                                                </button>
 
 
-                                    </td>
+                                            </div>
 
+
+
+
+
+                                        </td>
+                                    </tr>
                                     <?php
         }
         
