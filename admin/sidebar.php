@@ -73,6 +73,14 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
+                                        <a href="post.php" class="group">
+                                            <div class="flex items-center">
+                                            <i class="fa fa-home"></i>
+                                                <span class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">All Posts</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a href="apps-todolist.html" class="group">
                                             <div class="flex items-center">
                                                 <svg

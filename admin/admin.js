@@ -265,7 +265,7 @@ function pedit(pid) {
     var title = document.getElementById("title").value;
     var summery = document.getElementById("summery").value;
     var cat = document.getElementById("category").value;
-    var image = document.getElementById("imageuploader").files[0]; // Single file
+    var image = document.getElementById("imageuploader").files[0]; 
 
     var f = new FormData();
 
@@ -273,7 +273,7 @@ function pedit(pid) {
     f.append("summery", summery);
     f.append("title", title);
     f.append("cat", cat);
-    f.append("image", image); // Single file
+    f.append("image", image);
     f.append("pid", pid);
 
     var reqest = new XMLHttpRequest();
@@ -306,8 +306,6 @@ function pedit(pid) {
 
 
 function pdisapprove(pid){
-
-
 
      Swal.fire({
         position: "top-end",
@@ -347,11 +345,7 @@ function pdisapprove(pid){
                    
                   });
             }
-
-            
-
         }
-
     }
 
     reqest.open("POST","postDispproveProcess.php",true);

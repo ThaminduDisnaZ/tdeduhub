@@ -113,7 +113,80 @@ if (isset($_SESSION["admin"])) {
                         <div class="pt-5">
                             
 
+<!-- striped table -->
+<div class="table-responsive">
+    <table class="table-striped">
+        <thead>
+            <tr>   
+            <th class="text-center">Post ID</th>  
+                <th class="text-center">Image</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Category</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Action</th>
 
+           
+            </tr>
+        </thead>
+        <tbody>
+        
+        <?php
+        
+        $prs = Database::search("SELECT * FROM `post` ORDER BY `category_id` ");
+        $pnum = $prs->num_rows;
+
+
+
+        for ($i=0; $i < $pnum; $i++) { 
+            $pdata = $prs->fetch_assoc();
+            $crs = Database::search("SELECT * FROM `category` WHERE `category_id` = '".$pdata["category_id"]."' ");
+            $cdata = $crs->fetch_assoc();
+        ?>
+          <tr>
+          <td class="text-center"><?php echo $pdata["post_id"] ?></td>
+            <td ><img class="w-20 h-20 rounded-md overflow-hidden object-cover" src="../<?php echo $pdata["image"] ?>" alt="" /></td>
+                    <td class="text-center"><?php echo $pdata["title"] ?></td>
+                    <td class="text-center"><?php echo $pdata["date"] ?></td>
+                    <td class="text-center"><?php echo $cdata["category"] ?></td>
+                    <td class="text-center"><?php 
+                    
+                    if ($pdata["post_status_id"] == "1") {
+                      ?>  <span class="badge bg-success rounded-full">Active</span>  <?php
+                    }else    if ($pdata["post_status_id"] == "2") {
+                        ?>  <span class="badge bg-danger rounded-full">Not Active</span>  <?php
+                      }else    if ($pdata["post_status_id"] == "3") {
+                        ?>  <span class="badge bg-warning rounded-full">Reqested</span>  <?php
+                      }
+                    
+                    ?></td>
+                    <td class="text-center">
+                    <div class="grid grid-cols-1 gap-2 mb-5 lg:grid-cols-3 mt-6">
+    <a href="readPost.php?id=<?php echo $pdata['post_id']; ?>" class="btn btn-warning">
+        <i class="fa fa-eye"></i>
+                    </a>
+    <button onclick="papprove(<?php echo $pdata['post_id']; ?>);" class="btn btn-success">
+        <i class="fa fa-check"></i>
+    </button>
+    <button onclick="pdisapprove(<?php echo $pdata['post_id']; ?>);" class="btn btn-danger">
+        <i class="fa fa-close"></i>
+    </button>
+</div>
+                    </td>
+                </tr>
+        
+        
+        <?php
+        }
+        
+        ?>
+
+
+              
+           
+        </tbody>
+    </table>
+</div>
 
                         
                             

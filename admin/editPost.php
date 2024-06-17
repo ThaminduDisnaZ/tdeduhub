@@ -461,10 +461,13 @@ $cnum = $crs->num_rows;
 
 
 
+                        <div class="grid grid-cols-1 gap-6 mb-5 lg:grid-cols-2 mt-6">
 
-
-                        <button onclick="pedit(<?php echo ($pid) ?>)" class="btn btn-success w-full">Save
+                        <button onclick="pedit(<?php echo ($pid) ?>)" class="btn btn-success ">Save
                             Changes</button>
+                            
+                            <button  class="btn btn-warning " onclick="history.back()">Go Back</button>
+                        </div>
 
                     </div>
                 </div>

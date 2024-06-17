@@ -28,6 +28,14 @@ if (isset($_SESSION["admin"])) {
     <script defer src="assets/js/popper.min.js"></script>
     <script defer src="assets/js/tippy-bundle.umd.min.js"></script>
     <script defer src="assets/js/sweetalert.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
 </head>
 
 <body x-data="main" class="relative overflow-x-hidden font-nunito text-sm font-normal antialiased"
@@ -399,11 +407,11 @@ $pid = $_GET["id"];
                                         <div class="text-2xl font-semibold uppercase">Post ID :- <?php echo $pid?> <?php 
                                         
                                         if ($pdata["post_status_id"] == "1" ) {
-                                           ?>  <span class="badge bg-success">Active</span>  <?php
+                                           ?> <span class="badge bg-success">Active</span> <?php
                                         }else   if ($pdata["post_status_id"] == "2" ) {
-                                            ?>  <span class="badge bg-danger">Inactive</span>  <?php
+                                            ?> <span class="badge bg-danger">Inactive</span> <?php
                                          }else   if ($pdata["post_status_id"] == "3" ) {
-                                            ?>  <span class="badge bg-warning">Not Approved</span>  <?php
+                                            ?> <span class="badge bg-warning">Not Approved</span> <?php
                                          }
                                         
                                         ?></div>
@@ -455,7 +463,8 @@ $pid = $_GET["id"];
 
 
 
-                                        <button onclick="papprove(<?php echo $pid ?>);" type="button" class="btn btn-success gap-2">
+                                        <button onclick="papprove(<?php echo $pid ?>);" type="button"
+                                            class="btn btn-success gap-2">
                                             <i class="fa fa-check"></i>
                                             Approve Post
                                         </button>
@@ -463,13 +472,14 @@ $pid = $_GET["id"];
 
 
 
-<a href="editPost.php?id=<?php echo $pid ?>">
-                                        <button type="button" class="btn btn-warning gap-2">
-                                            <i class="fa fa-pencil"></i>
-                                            Edit Post
-                                        </button>
+                                        <a href="editPost.php?id=<?php echo $pid ?>">
+                                            <button type="button" class="btn btn-warning gap-2">
+                                                <i class="fa fa-pencil"></i>
+                                                Edit Post
+                                            </button>
                                         </a>
-                                        <button onclick="pdisapprove(<?php echo $pid ?>);" type="button" class="btn btn-danger gap-2">
+                                        <button onclick="pdisapprove(<?php echo $pid ?>);" type="button"
+                                            class="btn btn-danger gap-2">
                                             <i class="fa fa-xmark"></i>
                                             Disapprove Post
                                         </button>

@@ -154,7 +154,7 @@
                                             <path d="M18.5 18.5L22 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                                         </svg>
                                     </button>
-                                </div>
+                                </div>  <button  class="btn btn-warning " onclick="history.back()">Go Back</button>
                                 <div>
                                     <a
                                         href="javascript:;"
@@ -200,6 +200,7 @@
                                             />
                                         </svg>
                                     </a>
+                                  
                                     <a
                                         href="javascript:;"
                                         x-cloak
