@@ -239,30 +239,41 @@ function papprove(pid){
 
 }
 
+
+
+
+function changeProductImage() {
+    var image = document.getElementById("imageuploader");
+
+    image.onchange = function () {
+        var file_count = image.files.length;
+
+        if (file_count === 1) { // Use strict equality operator
+            var file = image.files[0]; // Access the first file from the files array
+            var url = window.URL.createObjectURL(file);
+          
+            document.getElementById("i").src = url;
+        } else {
+            alert("Image Upload Error");
+        }
+    }
+}
+
+
+
+
+
 function pedit(pid){
 
-var content =  quill.root.innerHTML;
 
-alert(content);
+    Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "Please Wait",
+        showConfirmButton: false,
+        timer: 10000
+      });
 
-
-    var f = new FormData();
-
-    f.append("pid",pid);
-
-    var reqest = new XMLHttpRequest();
-
-    reqest.onreadystatechange = function(){
-
-        if (reqest.readyState == 4 && reqest.status == 200)  {
-            var response = reqest.responseText;
-           
-        }
-
-    }
-
-    reqest.open("POST","postEditProcess.php",true);
-    reqest.send(f);
 }
 
 function pdisapprove(pid){
