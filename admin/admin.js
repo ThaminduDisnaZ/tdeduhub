@@ -248,8 +248,8 @@ function changeProductImage() {
     image.onchange = function () {
         var file_count = image.files.length;
 
-        if (file_count === 1) { // Use strict equality operator
-            var file = image.files[0]; // Access the first file from the files array
+        if (file_count === 1) {
+            var file = image.files[0];
             var url = window.URL.createObjectURL(file);
           
             document.getElementById("i").src = url;
@@ -263,18 +263,36 @@ function changeProductImage() {
 
 
 
-function pedit(pid){
+function pedit(pid) {
+    var content = quill.root.innerHTML;
+    var title = document.getElementById("title").value;
+    var summery = document.getElementById("summery").value;
+    var cat = document.getElementById("category").value;
+    var image = document.getElementById("imageuploader").files[0]; // Single file
 
+    var f = new FormData();
 
-    Swal.fire({
-        position: "top-end",
-        icon: "warning",
-        title: "Please Wait",
-        showConfirmButton: false,
-        timer: 10000
-      });
+    f.append("content", content);
+    f.append("summery", summery);
+    f.append("title", title);
+    f.append("cat", cat);
+    f.append("image", image); // Single file
+    f.append("pid", pid);
 
+    var reqest = new XMLHttpRequest();
+
+    reqest.onreadystatechange = function () {
+        if (reqest.readyState == 4 && reqest.status == 200) {
+            var response = reqest.responseText;
+            alert(response);
+        }
+    }
+
+    reqest.open("POST", "editPostProcess.php", true);
+    reqest.send(f);
 }
+
+
 
 function pdisapprove(pid){
 

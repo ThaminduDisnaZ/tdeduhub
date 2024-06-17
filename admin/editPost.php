@@ -317,28 +317,33 @@ if (isset($_SESSION["admin"])) {
                         ?>
 
                         <h1 class="text-2xl">Enter New Title</h1>
-                        <input type="text" placeholder="Enter Post Title..." class="form-input mb-6"
+                        <input id="title" type="text" placeholder="Enter Post Title..." class="form-input mb-6"
                             value="<?php echo $pdata["title"] ?>" required />
                         <h1 class="text-2xl">Enter New Summery</h1>
-                        <input type="text" placeholder="Enter Post Title..." class="form-input mb-6"
+                        <input id="summery" type="text" placeholder="Enter Post Title..." class="form-input mb-6"
                             value="<?php echo $pdata["summery"] ?>" required />
 
                         <h1 class="text-2xl">Change Category</h1>
                         <div>
-                            <select class="form-select text-white-dark mb-6">
+                            <select id="category" class="form-select text-white-dark mb-6">
 
 
                                 <?php 
 
 $ccrs = Database::search("SELECT * FROM `category` WHERE `category_id` = '". $pdata["category_id"] ."' ");
 $ccdata = $ccrs->fetch_assoc();
+
+$crs = Database::search("SELECT * FROM `category` ");
+$cnum = $crs->num_rows;
+
+
+
 ?>
-                                <option><?php  echo $ccdata["category"] ?> (<span
-                                        class="badge bg-success rounded-full">Currunt</span>)</option>
+                                <option value="<?php echo $ccdata["category_id"] ?>"><?php  echo $ccdata["category"] ?>
+                                    (<span class="badge bg-success rounded-full">Currunt</span>)</option>
                                 <?php 
 
-            $crs = Database::search("SELECT * FROM `category` ");
-            $cnum = $crs->num_rows;
+      
             
             for ($i=0; $i < $cnum ; $i++) { 
                 $cdata = $crs->fetch_assoc();
@@ -414,7 +419,7 @@ $ccdata = $ccrs->fetch_assoc();
                             </span>
                         </div>
                         <div id="editor">
-
+                            <?php echo $pdata["content"] ?>
                         </div>
 
                         <!-- Initialize Quill editor -->
@@ -443,8 +448,8 @@ $ccdata = $ccrs->fetch_assoc();
                                 <label for="imageuploader" onclick="changeProductImage();" class="btn btn-warning">
                                     Change Post Image <i class="ti-upload"></i></label>
                                 <div class="mt-5 center">
-                                    <img src="../resources/post_images/post.png" class="mb-6 w-full rounded-3xl"
-                                         id="i" />
+                                    <img src="../<?php echo $pdata["image"] ?>" class="mb-6 w-full rounded-3xl"
+                                        id="i" />
 
                                 </div>
 
