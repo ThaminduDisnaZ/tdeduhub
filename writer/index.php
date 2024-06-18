@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if (isset($_SESSION["admin"])) {
+if (isset($_SESSION["writer"])) {
 
-    $adata = $_SESSION["admin"];
+    $wdata = $_SESSION["writer"];
 
     $d = new DateTime();
     $tz = new DateTimeZone("Asia/Colombo");

@@ -1,48 +1,14 @@
-function signinOTP() {
-
-    var reqest = new XMLHttpRequest();
-
-    reqest.onreadystatechange = function () {
-        if (reqest.readyState == 4 && reqest.status == 200) {
-            var response = reqest.responseText;
-            if (response != "ok") {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Email Sending fail",
-
-                });
-            } else {
-                Swal.fire({
-                    icon: "success",
-                    title: "OTP",
-                    text: "Email Send Success",
-
-                });
-            }
-        }
-    }
-
-
-    reqest.open("POST", "adminOTPProcess.php", true);
-    reqest.send();
-
-
-}
-
-
-
-function adminSignin() {
+function writerSignin() {
 
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
-    var otp = document.getElementById("otp").value;
+  
 
     var f = new FormData();
 
     f.append("em", email);
     f.append("pw", password);
-    f.append("otp", otp);
+
 
 
     var reqest = new XMLHttpRequest();
@@ -66,7 +32,7 @@ function adminSignin() {
     }
 
 
-    reqest.open("POST", "adminSigninProcess.php", true);
+    reqest.open("POST", "writerSigninProcess.php", true);
     reqest.send(f);
 
 
