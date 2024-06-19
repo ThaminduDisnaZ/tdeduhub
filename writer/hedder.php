@@ -1,6 +1,8 @@
                 <!-- start header section -->
             
-            
+            <?php
+               $wdata = $_SESSION["writer"];
+            ?>
             
                 <header class="z-40" :class="{'dark' : $store.app.semidark && $store.app.menu === 'horizontal'}">
                     <div class="shadow-sm">
@@ -9,8 +11,8 @@
                                 <a href="index.html" class="main-logo flex shrink-0 items-center">
                                     <img class="inline w-8 ltr:-ml-1 rtl:-mr-1" src="assets/images/logo.svg" alt="image" />
                                     <span
-                                        class="hidden align-middle text-2xl font-semibold transition-all duration-300 ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light md:inline"
-                                        >VRISTO</span
+                                        class="hidden align-middle text-1xl font-semibold transition-all duration-300 ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light md:inline"
+                                        >WRITER DASHBOARD</span
                                     >
                                 </a>
 
@@ -464,7 +466,7 @@
                                         <span
                                             ><img
                                                 class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                                 src="<?php echo $adata["photo"]; ?>"
+                                                 src="../<?php echo $wdata["photo"]; ?>"
                                                 alt="image"
                                         /></span>
                                     </a>
@@ -478,16 +480,16 @@
                                         <li>
                                             <div class="flex items-center px-4 py-4">
                                                 <div class="flex-none">
-                                                    <img class="h-10 w-10 rounded-md object-cover" src="<?php echo $adata["photo"]; ?>" alt="image" />
+                                                    <img class="h-10 w-10 rounded-md object-cover" src="../<?php echo $wdata["photo"]; ?>" alt="image" />
                                                 </div>
                                                 <div class="truncate ltr:pl-4 rtl:pr-4">
                                                     <h4 class="text-base">
-                                                        <?php echo $adata["name"]; ?><br><span class="rounded bg-success-light px-1 text-xs text-success ltr:ml-2 rtl:ml-2">Super Admin</span>
+                                                        <?php echo $wdata["name"]; ?><br><span class="rounded bg-success-light px-1 text-xs text-success ltr:ml-2 rtl:ml-2">Post Writer</span>
                                                     </h4>
                                                     <a
                                                         class="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white"
                                                         href="javascript:;"
-                                                        ><?php echo $adata["email"]; ?></a
+                                                        ><?php echo $wdata["email"]; ?></a
                                                     >
                                                 </div>
                                             </div>
@@ -604,7 +606,7 @@
                                                         stroke-linejoin="round"
                                                     />
                                                 </svg>
-                                               <button onclick="adminSignout();">Sign Out</button>
+                                               <button onclick="writerSignout();">Sign Out</button>
                                             </a>
                                         </li>
                                     </ul>
@@ -1401,5 +1403,5 @@
                         </ul>
                     </div>
                 </header>
-
+<script src="./writer.js"></script>
                 <!-- end header section -->

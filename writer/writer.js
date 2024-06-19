@@ -38,14 +38,80 @@ function writerSignin() {
 
 }
 
-function adminSignout() {
+function writerSignout() {
+    alert("ok");
     window.location.assign("signin.php");
     var reqest = new XMLHttpRequest();
 
-    reqest.open("POST", "adminSignoutProcess.php", true);
+    reqest.open("POST", "writerSignoutProcess.php", true);
     reqest.send();
 
 }
+
+
+
+function replyComment(cid){
+
+
+}
+
+
+function deleteComment(cid){
+
+    var f = new FormData();
+
+    f.append("cid",cid);
+
+    var reqest = new XMLHttpRequest();
+
+    reqest.onreadystatechange = function (){
+        if (reqest.readyState == 4 && reqest.status == 200) {
+            
+            var response = reqest.responseText;
+
+            alert (response);
+
+
+        }
+    }
+
+
+
+    reqest.open("POST", "deleteCommentProcess.php",true );
+    reqest.send(f);
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function changeWriterStatus(wid) {
 

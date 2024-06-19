@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if (isset($_SESSION["admin"])) {
+if (isset($_SESSION["writer"])) {
 
-    $adata = $_SESSION["admin"];
+    $wdata = $_SESSION["writer"];
 
 ?>
 
@@ -14,7 +14,7 @@ if (isset($_SESSION["admin"])) {
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Super Admin Dashboard</title>
+    <title>Writer Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -107,115 +107,109 @@ if (isset($_SESSION["admin"])) {
 
                     <div class="pt-5">
 
-                        <br>
-
-                        <h1 class="text-2xl">Add New Category</h1>
 
 
 
-                        <input type="text" placeholder="Category Name" id="cname" class="form-input mb-3" required />
-
-                        <textarea rows="3" class="form-textarea" id="cdes" placeholder="Enter Category Description"
-                            required></textarea>
-
-                        <button onclick="addCat();" class="btn btn-success mb-8">Add</button>
+                        <div class="table-responsive">
 
 
-                        <div class="hidden" id="loadEditCat">
+                            <?php
+                        
+                     
+$prs = Database::search("SELECT * FROM `post` WHERE `writer_id` = '".$wdata["writer_id"]."' ");
+$pn = $prs->num_rows;
+
+
+$commentnum = "0";
+
+
+
 
                         
-                        </div>
-
-
-                       
-                        <div class="table-responsive" id="catTable">
+                        ?>
                             <table>
                                 <thead>
+
+
+
                                     <tr>
-                                        <th>Category ID</th>
-                                        <th>Category Name</th>
-                                        <th>Category Description</th>
-                                        <th class="text-center">Related Posts</th>
-                                        <th class="text-center">Status</th>
+                                        <th>User</th>
+                                        <th>Comment</th>
+                                        <th>Post</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
                                         <th class="text-center">Action </th>
                                     </tr>
+
+
                                 </thead>
                                 <tbody>
-
                                     <?php
         
-        $crs = Database::search("SELECT * FROM `category` ");
-        $cnum = $crs->num_rows;
+        for ($i=0; $i < $pn; $i++) { 
 
-        for ($i=0; $i < $cnum ; $i++) { 
-                $cdata = $crs->fetch_assoc();
 
-                $prs = Database::search("SELECT * FROM `post` WHERE `category_id` = '". $cdata["category_id"]."' ");
-                $pnum = $prs->num_rows;
+            $pdata = $prs->fetch_assoc();
+            $commentrs = Database::search(" SELECT * FROM `comment` WHERE `post_id` = '".$pdata["post_id"]."' ORDER BY `date` ");
+            $conum = $commentrs->num_rows;
+            $commentnum += $conum;
+        
+           $cdata = $commentrs->fetch_assoc();
 
-                ?>
+      
+         $urs = Database::search("SELECT * FROM `user` WHERE `user_id` = '".$cdata["user_id"]."' ");
+         $ucdata = $urs->fetch_assoc();
+
+
+            ?>
+
                                     <tr>
-                                        <td><?php echo $cdata["category_id"] ?></td>
-                                        <td><?php echo $cdata["category"] ?></td>
-                                        <td><?php echo $cdata["description"] ?></td>
-                                        <td class="text-center"><?php echo $pnum ?></td>
-                                        <td class="text-center">
 
-                                            <?php 
-           
-           if ($cdata["category_status_id"] == "1") {
-          ?> <span class="badge bg-success rounded-full">Active</span> <?php
-           }else if($cdata["category_status_id"] == "2") {
-            ?> <span class="badge bg-danger rounded-full">Inactive</span> <?php
-             }else if($cdata["category_status_id"] == "3") {
-                ?> <span class="badge bg-warning rounded-full">Reqested</span> <?php
-                 }
-           
-           ?>
-
-                                        </td>
+                                        <td><?php echo $ucdata["name"] ?></td>
+                                        <td><?php echo $cdata["comment"] ?></td>
+                                        <td><?php echo $pdata["title"] ?></td>
+                                        <td><?php echo $cdata["date"] ?></td>
+                                        <td><?php
+                                        
+                                        if ($cdata["comment_status_id"] == 1) {
+                                           ?> <span class="badge bg-success rounded-full">Active</span> <?php
+                                        } else {
+                                            ?> <span class="badge bg-danger rounded-full">Inactive</span> <?php
+                                        }
+                                        
+                                        
+                                        ?></td>
                                         <td>
 
 
 
-                                            <div class="grid grid-cols-1 gap-2 mb-1 lg:grid-cols-3 mt-1">
+                                        <div class="grid grid-cols-1 gap-2 mb-1 lg:grid-cols-2 mt-1">
 
-                                                <button class="btn btn-warning"
-                                                    onclick="editCat(<?php echo $cdata["category_id"]; ?>);">
-                                                    <i class="fa fa-pencil"></i>
-                                                </button>
+<button onclick='replyComment(<?php echo $cdata["comment_id"] ?>);' class="btn btn-warning"   >
+    <i class="fa fa-reply"></i>
+</button>
+<button onclick='deleteComment(<?php echo $cdata["comment_id"] ?>);' class="btn btn-danger"   >
+    <i class="fa fa-close"></i>
+</button>
 
-                                                <button class="btn btn-success"
-                                                    onclick="activeCat(<?php echo $cdata["category_id"]; ?>);">
-                                                    <i class="fa fa-check"></i>
-                                                </button>
-
-                                                <button class="btn btn-danger"
-                                                    onclick="inactiveCat(<?php echo $cdata["category_id"]; ?>);">
-                                                    <i class="fa fa-close"></i>
-                                                </button>
-
-
-                                            </div>
-
-
-
-
+                                        </div>
 
                                         </td>
+
                                     </tr>
+
                                     <?php
+
+
         }
         
         ?>
 
 
-
-
-
                                 </tbody>
                             </table>
                         </div>
+
 
 
 
@@ -239,7 +233,7 @@ if (isset($_SESSION["admin"])) {
     <script defer src="assets/js/alpine.min.js"></script>
     <script src="assets/js/custom.js"></script>
     <script defer src="assets/js/apexcharts.js"></script>
-    <script src="admin.js"></script>
+    <script defer src="writer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
     document.addEventListener('alpine:init', () => {

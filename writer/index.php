@@ -321,295 +321,75 @@ $wrs = Database::search("SELECT * FROM `writer` ");
 $wn = $wrs->num_rows;
 
 
-$prs = Database::search("SELECT * FROM `post` ");
-
+$prs = Database::search("SELECT * FROM `post` WHERE `writer_id` = '".$wdata["writer_id"]."' ");
 $pn = $prs->num_rows;
+
+
+$commentnum = "0";
+
+for ($i=0; $i < $pn; $i++) { 
+    $pdata = $prs->fetch_assoc();
+    $commentrs = Database::search(" SELECT * FROM `comment` WHERE `post_id` = '".$pdata["post_id"]."' ");
+    $conum = $commentrs->num_rows;
+    $commentnum += $conum;
+}
+
+
+
+
 
 ?>
 
 
-                        <div class="mb-6 grid grid-cols-1 gap-6 text-white sm:grid-cols-2 xl:grid-cols-4">
+                        <div class="mb-6 grid grid-cols-1 gap-6 text-white sm:grid-cols-2 xl:grid-cols-3">
                             <!-- Users Visit -->
-                            <div class="panel bg-gradient-to-r from-cyan-500 to-cyan-400">
-                                <div class="flex justify-between">
-                                    <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">Users Visit</div>
-                                    <div x-data="dropdown" @click.outside="open = false" class="dropdown">
-                                        <a href="javascript:;" @click="toggle">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-5 w-5 opacity-70 hover:opacity-80">
-                                                <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                <circle opacity="0.5" cx="12" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                                <circle cx="19" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                            </svg>
-                                        </a>
-                                        <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
-                                            class="text-black ltr:right-0 rtl:left-0 dark:text-white-dark">
-                                            <li><a href="javascript:;" @click="toggle">View Report</a></li>
-                                            <li><a href="javascript:;" @click="toggle">Edit Report</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="mt-5 flex items-center">
-                                    <div class="text-3xl font-bold ltr:mr-3 rtl:ml-3"><?php echo $uvd["count"];   ?>
-                                    </div>
-                                    <div class="badge bg-white/30">+ 2.35%</div>
-                                </div>
-                                <div class="mt-5 flex items-center font-semibold">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 ltr:mr-2 rtl:ml-2">
-                                        <path opacity="0.5"
-                                            d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                        <path
-                                            d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                    </svg>
-                                    Last Week 44,700
-                                </div>
-                            </div>
-
+                            
                             <!-- Sessions -->
                             <div class="panel bg-gradient-to-r from-violet-500 to-violet-400">
                                 <div class="flex justify-between">
                                     <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">Registered Users</div>
-                                    <div x-data="dropdown" @click.outside="open = false" class="dropdown">
-                                        <a href="javascript:;" @click="toggle">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-5 w-5 opacity-70 hover:opacity-80">
-                                                <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                <circle opacity="0.5" cx="12" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                                <circle cx="19" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                            </svg>
-                                        </a>
-                                        <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
-                                            class="text-black ltr:right-0 rtl:left-0 dark:text-white-dark">
-                                            <li><a href="javascript:;" @click="toggle">View Report</a></li>
-                                            <li><a href="javascript:;" @click="toggle">Edit Report</a></li>
-                                        </ul>
-                                    </div>
+                                    
                                 </div>
+
+
                                 <div class="mt-5 flex items-center">
                                     <div class="text-3xl font-bold ltr:mr-3 rtl:ml-3"><?php echo $udn ?></div>
-                                    <div class="badge bg-white/30">- 2.35%</div>
+                             
                                 </div>
-                                <div class="mt-5 flex items-center font-semibold">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 ltr:mr-2 rtl:ml-2">
-                                        <path opacity="0.5"
-                                            d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                        <path
-                                            d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                    </svg>
-                                    Last Week 84,709
-                                </div>
+                             
                             </div>
 
                             <!-- Time On-Site -->
                             <div class="panel bg-gradient-to-r from-blue-500 to-blue-400">
                                 <div class="flex justify-between">
-                                    <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">Registered Writers</div>
-                                    <div x-data="dropdown" @click.outside="open = false" class="dropdown">
-                                        <a href="javascript:;" @click="toggle">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-5 w-5 opacity-70 hover:opacity-80">
-                                                <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                <circle opacity="0.5" cx="12" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                                <circle cx="19" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                            </svg>
-                                        </a>
-                                        <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
-                                            class="text-black ltr:right-0 rtl:left-0 dark:text-white-dark">
-                                            <li><a href="javascript:;" @click="toggle">View Report</a></li>
-                                            <li><a href="javascript:;" @click="toggle">Edit Report</a></li>
-                                        </ul>
-                                    </div>
+                                    <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">Your Comments</div>
+                                   
                                 </div>
                                 <div class="mt-5 flex items-center">
-                                    <div class="text-3xl font-bold ltr:mr-3 rtl:ml-3"><?php echo $wn ?></div>
-                                    <div class="badge bg-white/30">+ 1.35%</div>
-                                </div>
-                                <div class="mt-5 flex items-center font-semibold">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 ltr:mr-2 rtl:ml-2">
-                                        <path opacity="0.5"
-                                            d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                        <path
-                                            d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                    </svg>
-                                    Last Week 37,894
+                                    <div class="text-3xl font-bold ltr:mr-3 rtl:ml-3"><?php echo $commentnum ?></div>
+                               
                                 </div>
                             </div>
 
                             <!-- Bounce Rate -->
                             <div class="panel bg-gradient-to-r from-fuchsia-500 to-fuchsia-400">
-                                <div class="flex justify-between">
-                                    <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">Total Post</div>
-                                    <div x-data="dropdown" @click.outside="open = false" class="dropdown">
-                                        <a href="javascript:;" @click="toggle">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                class="h-5 w-5 opacity-70 hover:opacity-80">
-                                                <circle cx="5" cy="12" r="2" stroke="currentColor" stroke-width="1.5" />
-                                                <circle opacity="0.5" cx="12" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                                <circle cx="19" cy="12" r="2" stroke="currentColor"
-                                                    stroke-width="1.5" />
-                                            </svg>
-                                        </a>
-                                        <ul x-cloak x-show="open" x-transition x-transition.duration.300ms
-                                            class="text-black ltr:right-0 rtl:left-0 dark:text-white-dark">
-                                            <li><a href="javascript:;" @click="toggle">View Report</a></li>
-                                            <li><a href="javascript:;" @click="toggle">Edit Report</a></li>
-                                        </ul>
-                                    </div>
+                            <div class="flex justify-between">
+                                    <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">You'r Activated Posts</div>
+                                    
                                 </div>
                                 <div class="mt-5 flex items-center">
                                     <div class="text-3xl font-bold ltr:mr-3 rtl:ml-3"><?php echo $pn?></div>
-                                    <div class="badge bg-white/30">- 0.35%</div>
+                                    
                                 </div>
-                                <div class="mt-5 flex items-center font-semibold">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 ltr:mr-2 rtl:ml-2">
-                                        <path opacity="0.5"
-                                            d="M3.27489 15.2957C2.42496 14.1915 2 13.6394 2 12C2 10.3606 2.42496 9.80853 3.27489 8.70433C4.97196 6.49956 7.81811 4 12 4C16.1819 4 19.028 6.49956 20.7251 8.70433C21.575 9.80853 22 10.3606 22 12C22 13.6394 21.575 14.1915 20.7251 15.2957C19.028 17.5004 16.1819 20 12 20C7.81811 20 4.97196 17.5004 3.27489 15.2957Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                        <path
-                                            d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
-                                            stroke="currentColor" stroke-width="1.5"></path>
-                                    </svg>
-                                    Last Week 50.01%
-                                </div>
+                              
                             </div>
                         </div>
 
 
-                        <!-- hover table -->
-                        <h5 class="text-lg font-semibold dark:text-white-light text-center">Writers</h5>
-                        <div class="table-responsive mb-30">
-                            <table class="table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Date</th>
-                                        <th>Sale</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <?php
-
-for ($i=0; $i < $wn; $i++) { 
-    $wd = $wrs->fetch_assoc();
-    ?>
-                                    <tr>
-                                        <td><?php echo $wd["name"] ?></td>
-
-                                        <td><?php echo $wd["date"] ?></td>
-                                        <td><?php echo $wd["email"] ?></td>
-                                        <td id="wstatus">
-                                            <?php
-if ($wd["writer_status_id"] == "1") {
-   ?><span class="badge bg-success">Active</span><?php
-} else {
-    ?><span class="badge bg-danger">Inactive</span><?php
-}
-
-?>
+                     
 
 
-                                        </td>
-                                        <td><button id="wsb"
-                                                onclick="changeWriterStatus(<?php echo $wd["writer_id"] ?>);"
-                                                class="btn btn-warning"><a class="fa-lock">Change Status</a></button>
-                                        </td>
-
-                                    </tr>
-
-                                    <?php
-}
-
-?>
-
-
-
-                                </tbody>
-                            </table>
-                        </div>
-
-
-                        <!-- hover table -->
-                        <h5 class="text-lg font-semibold dark:text-white-light text-center mt-10">Users</h5>
-                        <div class="table-responsive mb-30">
-                            <table class="table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Date</th>
-                                        <th>Sale</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <?php
-
-for ($i=0; $i < $udn; $i++) { 
-    $ud = $urs->fetch_assoc();
-    ?>
-                                    <tr>
-                                        <td><?php echo $ud["name"] ?></td>
-
-                                        <td><?php echo $ud["date"] ?></td>
-                                        <td><?php echo $ud["email"] ?></td>
-
-                                        <td id="ustatus">
-                                            <?php
-if ($ud["user_status_id"] == "1") {
-   ?><span class="badge bg-success">Active</span><?php
-} else {
-    ?><span class="badge bg-danger">Inactive</span><?php
-}
-
-?>
-
-
-                                        </td>
-
-                                        <td><button id="wsb" onclick="changeUserStatus(<?php echo $ud["user_id"] ?>);"
-                                                class="btn btn-warning"><a class="fa-lock">Change Status</a></button>
-                                        </td>
-
-                                    </tr>
-
-                                    <?php
-}
-
-?>
-
-
-
-                                </tbody>
-                            </table>
-                        </div>
-
-
-                        <h5 class="text-lg font-semibold dark:text-white-light text-center mt-10">Recenly added Posts
+                        <h5 class="text-lg font-semibold dark:text-white-light text-center mt-10">You Are Recenly added Posts
                         </h5>
 
 
@@ -618,7 +398,7 @@ if ($ud["user_status_id"] == "1") {
 
                             <?php
 
-$prsr = Database::search("SELECT * FROM `post` WHERE `post_status_id` = '1' ORDER BY `date` DESC LIMIT 8");
+$prsr = Database::search("SELECT * FROM `post` WHERE `post_status_id` = '1' AND `writer_id` = '".$wdata["writer_id"]."' ORDER BY `date` DESC LIMIT 8");
 
 $pnr = $prsr->num_rows;
 
