@@ -10,11 +10,12 @@ $email = $_POST["em"];
 $password = $_POST["pw"];
 
 
-if ($email != $wdata["email"] || $password != $wdata["password"]) {
-    echo("Incorrect Email or Password");
-}else {
+if ($email = $wdata["email"] || $password = $wdata["password"]) {
     echo("ok");
-    $_SESSION["writer"] = $wdata; 
+    $_SESSION["writer"] = $wdata;
+}else {
+ 
+    echo("Incorrect Email or Password");
 }
 
 

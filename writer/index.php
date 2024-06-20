@@ -343,53 +343,54 @@ for ($i=0; $i < $pn; $i++) {
 
                         <div class="mb-6 grid grid-cols-1 gap-6 text-white sm:grid-cols-2 xl:grid-cols-3">
                             <!-- Users Visit -->
-                            
+
                             <!-- Sessions -->
                             <div class="panel bg-gradient-to-r from-violet-500 to-violet-400">
                                 <div class="flex justify-between">
                                     <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">Registered Users</div>
-                                    
+
                                 </div>
 
 
                                 <div class="mt-5 flex items-center">
                                     <div class="text-3xl font-bold ltr:mr-3 rtl:ml-3"><?php echo $udn ?></div>
-                             
+
                                 </div>
-                             
+
                             </div>
 
                             <!-- Time On-Site -->
                             <div class="panel bg-gradient-to-r from-blue-500 to-blue-400">
                                 <div class="flex justify-between">
                                     <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">Your Comments</div>
-                                   
+
                                 </div>
                                 <div class="mt-5 flex items-center">
                                     <div class="text-3xl font-bold ltr:mr-3 rtl:ml-3"><?php echo $commentnum ?></div>
-                               
+
                                 </div>
                             </div>
 
                             <!-- Bounce Rate -->
                             <div class="panel bg-gradient-to-r from-fuchsia-500 to-fuchsia-400">
-                            <div class="flex justify-between">
+                                <div class="flex justify-between">
                                     <div class="text-md font-semibold ltr:mr-1 rtl:ml-1">You'r Activated Posts</div>
-                                    
+
                                 </div>
                                 <div class="mt-5 flex items-center">
                                     <div class="text-3xl font-bold ltr:mr-3 rtl:ml-3"><?php echo $pn?></div>
-                                    
+
                                 </div>
-                              
+
                             </div>
                         </div>
 
 
-                     
 
 
-                        <h5 class="text-lg font-semibold dark:text-white-light text-center mt-10">You Are Recenly added Posts
+
+                        <h5 class="text-lg font-semibold dark:text-white-light text-center mt-10">You Are Recenly added
+                            Posts
                         </h5>
 
 
@@ -409,25 +410,25 @@ $pnr = $prsr->num_rows;
                             ?>
 
                             <!-- card 2 -->
-                             <a href="readPost.php?id=<?php echo $pdr["post_id"]?>">
-                            <div
-                                class="max-w-[19rem] w-full bg-white shadow-[4px_6px_10px_-3px_#bfc9d4] rounded border border-[#e0e6ed] dark:border-[#1b2e4b] dark:bg-[#191e3a] dark:shadow-none">
-                                <div class="py-7 px-6">
-                                    <div class="-mt-7 mb-7 -mx-6 rounded-tl rounded-tr h-[215px] overflow-hidden">
-                                        <img src="../<?php echo $pdr["image"]  ?>" alt="image"
-                                            class="w-full h-full object-cover" />
-                                    </div>
-                                    <h5 class="text-[#3b3f5c] text-xl font-semibold mb-4 dark:text-white-light">
-                                        <?php echo $pdr["title"]  ?></h5>
-                                    <p class="text-white-dark"><?php echo $pdr["summery"]  ?></p>
+                            <a href="readPost.php?id=<?php echo $pdr["post_id"]?>">
+                                <div
+                                    class="max-w-[19rem] w-full bg-white shadow-[4px_6px_10px_-3px_#bfc9d4] rounded border border-[#e0e6ed] dark:border-[#1b2e4b] dark:bg-[#191e3a] dark:shadow-none">
+                                    <div class="py-7 px-6">
+                                        <div class="-mt-7 mb-7 -mx-6 rounded-tl rounded-tr h-[215px] overflow-hidden">
+                                            <img src="../<?php echo $pdr["image"]  ?>" alt="image"
+                                                class="w-full h-full object-cover" />
+                                        </div>
+                                        <h5 class="text-[#3b3f5c] text-xl font-semibold mb-4 dark:text-white-light">
+                                            <?php echo $pdr["title"]  ?></h5>
+                                        <p class="text-white-dark"><?php echo $pdr["summery"]  ?></p>
 
-                                    <p class="text-white-dark mt-6"><?php echo $pdr["date"]  ?></p>
+                                        <p class="text-white-dark mt-6"><?php echo $pdr["date"]  ?></p>
 
-                                    <div
-                                        class="mb-3 mt-3 grid grid-cols-6 gap-6 text-white sm:grid-cols-6 xl:grid-cols-6">
-                                        <button type="button" class="btn btn-primary ">Read Post</button>
+                                        <div
+                                            class="mb-3 mt-3 grid grid-cols-6 gap-6 text-white sm:grid-cols-6 xl:grid-cols-6">
+                                            <button type="button" class="btn btn-primary ">Read Post</button>
 
-                                        <?php
+                                            <?php
         
         if ($pdr["post_status_id"] == "1") {
            ?> <button type="button" class="btn btn-success ">Active</button><?php
@@ -442,10 +443,10 @@ $pnr = $prsr->num_rows;
 
 
 
-                                    </div>
+                                        </div>
 
+                                    </div>
                                 </div>
-                            </div>
 
 
                             </a>
